@@ -1,0 +1,29 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.main-header {
+    width: 100%;
+    height: 80px;
+    background: purple;
+}
+
+.main-header ul {
+    height: 100%;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.main-header li {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+}
+
+.main-header li:hover {
+    background: rgba(255,255,255,0.2);
+}

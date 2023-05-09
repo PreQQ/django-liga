@@ -5,7 +5,7 @@ from . import views
 
 app_name = "main"
 urlpatterns = [
-    path("", views.IndexView.as_view(), name="index"),
+    path("", views.views, name="index"),
     path("matches/", views.matches, name="matches"),
     path("table/", views.table, name="table"),
     path("statistics/", views.statistics, name="statistics"),

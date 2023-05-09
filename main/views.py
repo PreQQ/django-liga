@@ -2,8 +2,8 @@ import genericpath
 from django.shortcuts import render
 
 # Create your views here.
-class IndexView(genericpath.ListView):
-    template_name = "main/index.html"
+def views(request):
+    return render(request, "home.html")
     
 def matches(request):
     return render(request)
