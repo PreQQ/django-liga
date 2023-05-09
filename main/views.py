@@ -9,13 +9,14 @@ def matches(request):
     return render(request, "matches.html")
 
 def table(request):
-    return render(request)
+    teams = [1,2,3]
+    return render(request, "table.html", {"teams": teams})
 
 def statistics(request):
-    return render(request)
+    return render(request, "statistics.html")
 
 def club(request):
-    return render(request)
+    return render(request, "club.html")
 
 def player(request):
-    return render(request)
+    return render(request, "player.html")

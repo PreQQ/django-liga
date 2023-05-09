@@ -1,4 +1,54 @@
-{% extends "layout.html" %}
-
-{% block title %}Strona główna{% endblock %}
-{% block body_content %}<h1>Table</h1>{% endblock %}
+{% extends "layout.html" %} {% block title %}Tabela{% endblock %} {% block body_content %}
+<div class="table">
+    <div class="table-header">Sezon: <span>2022-23</span></div>
+    <div>
+        <div class="table-team-header">
+            <div class="table-team-header__club">Klub</div>
+            <div class="table-team-header__content">MP</div>
+            <div class="table-team-header__content">W</div>
+            <div class="table-team-header__content">D</div>
+            <div class="table-team-header__content">L</div>
+            <div class="table-team-header__content">GF</div>
+            <div class="table-team-header__content">GA</div>
+            <div class="table-team-header__content">GD</div>
+            <div class="table-team-header__content">Pts</div>
+            <div class="table-team-header__last">Ostatnie 5</div>
+        </div>
+        {% for value in teams %}
+        <div class="table-team">
+            <div class="table-team__club">{{ value }} Name</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__content">00</div>
+            <div class="table-team__last">
+                <div class="table-icon table-win-icon"></div>
+                <div class="table-icon table-win-icon"></div>
+                <div class="table-icon table-win-icon"></div>
+                <div class="table-icon table-win-icon"></div>
+                <div class="table-icon table-win-icon"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="table-footer">
+        <div class="table-footer__title">Ostatnie 5 meczy (Legenda):</div>
+        <div class="table-footer__text">
+            <div class="table-icon table-win-icon"></div>
+            Wygrana
+        </div>
+        <div class="table-footer__text">
+            <div class="table-icon table-draw-icon"></div>
+            Remis
+        </div>
+        <div class="table-footer__text">
+            <div class="table-icon table-loss-icon"></div>
+            Przegrana
+        </div>
+    </div>
+</div>
+{% endblock %}
