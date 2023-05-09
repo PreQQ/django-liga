@@ -6,14 +6,21 @@
 
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/table.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/matches.css' %}" />
     </head>
     <body>
         <header class="main-header">
             <nav>
                 <ul>
-                    <li>mecze</li>
-                    <li>tabela</li>
-                    <li>styatystyki</li>
+                    <a href="{% url 'main:matches' %}">
+                        <li>mecze</li>
+                    </a>
+                    <a href="{% url 'main:table' %}">
+                        <li>tabela</li>
+                    </a>
+                    <a href="{% url 'main:statistics' %}">
+                        <li>styatystyki</li>
+                    </a>
                 </ul>
             </nav>
         </header>

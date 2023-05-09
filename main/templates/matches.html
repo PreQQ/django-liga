@@ -1,1 +1,22 @@
-{% extends "layout.html" %} {% block title %}Strona główna{% endblock %} {% block body_content %} Matches {% endblock %}
+{% extends "layout.html" %} {% block title %}Mecze{% endblock %} {% block body_content %}<div class="outer-matches">
+  {% for row in rows %}<div class="matches">
+    <div class="matches-header">Kolejka {{ row }} z 38</div>
+    <div class="matches-body">
+      {% for match in matches %}
+        <a href="{% url 'main:match' match %}">
+          <div class="matches-content">
+            <div class="matches-content__teams">
+            <div class="matches-content__teams_item">Everton <span>1</span></div>
+            <div class="matches-content__teams_item matches-winner">Arsenal <span>5</span></div>
+          </div>
+          <div class="matches-content__date">
+            Sob, Maj 13
+          </br>
+          <span>16:00</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>{% endfor %}
+</div>{% endblock %}
