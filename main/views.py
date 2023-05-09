@@ -6,7 +6,7 @@ def views(request):
     return render(request, "home.html")
     
 def matches(request):
-    return render(request)
+    return render(request, "matches.html")
 
 def table(request):
     return render(request)

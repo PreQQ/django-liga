@@ -4,7 +4,7 @@
     <head>
         <title>{% block title %}Liga{% endblock %}</title>
 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
     </head>
     <body>
         <header class="main-header">
@@ -16,8 +16,6 @@
                 </ul>
             </nav>
         </header>
-        <main>
-            {% block body_content %}Default{% endblock %}
-        </main>
+        <main>{% block body_content %}Default{% endblock %}</main>
     </body>
 </html>
