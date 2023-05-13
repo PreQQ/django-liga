@@ -13,8 +13,8 @@ def matches(request):
     return render(request, "matches.html", {"matches": matches, "rows": rows})
 
 def match(request, match_id):
-    matchFinder = get_object_or_404(Match, pk=match_id)
-    return render(request, "match.html", {"match": matchFinder})
+    # matchFinder = get_object_or_404(Match, pk=match_id)
+    return render(request, "match.html", {"match": match_id})
 
 def table(request):
     teams = [1,2,3]

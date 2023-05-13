@@ -1,3 +1,269 @@
 {% extends "layout.html" %} {% block title %}Match{% endblock %} {% block body_content %}
-<h1>Match</h1>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var show = function (elem) {
+        elem.style.display = "block";
+    };
+
+    var hide = function (elem) {
+        elem.style.display = "none";
+    };
+
+    var toggle = function (elem, elem2) {
+        if (window.getComputedStyle(elem).display === "block") {
+            hide(elem);
+            show(elem2);
+            return;
+        }
+
+        show(elem);
+        hide(elem2);
+    };
+
+    document.addEventListener(
+        "click",
+        function (event) {
+            if (event.target.classList.contains("toggle-team")) {
+                event.preventDefault();
+
+                var content = document.querySelector("#team");
+                var content2 = document.querySelector("#stats");
+                if (!content) return;
+
+                toggle(content, content2);
+            }
+            if (event.target.classList.contains("toggle-stats")) {
+                event.preventDefault();
+
+                var content = document.querySelector("#stats");
+                var content2 = document.querySelector("#team");
+                if (!content) return;
+
+                toggle(content, content2);
+            }
+        },
+        false
+    );
+</script>
+<div class="match-container">
+    <div class="match-header">
+        <div class="match-header__date">Sob, Maj 13</div>
+        <div class="match-header__teams">
+            <div class="match-header__teams_name">Arsenal</div>
+            <div class="match-header__teams_outcome">2 - 0</div>
+            <div class="match-header__teams_name">Everton</div>
+        </div>
+        <div class="match-header_goals_icon">Gole</div>
+        <div class="match-header__goals_container">
+            <div class="match-header__goals_left">
+                <div class="match-header__goals_left_item">Fabian Schar 24'</div>
+                <div class="match-header__goals_left_item">Fabian Schar 71' (K)</div>
+            </div>
+            <div class="match-header__goals_right"></div>
+        </div>
+    </div>
+    <div class="match-switches">
+        <a class="match-switches__button toggle-team" href="#team">Skład</a>
+        <a class="match-switches__button toggle-stats" href="#stats">Statystyki</a>
+    </div>
+    <div class="match-body">
+        <div class="match-body__lineup toggle-content" id="team">
+            <div class="match-body__lineup_team">Arsenal</div>
+            <div class="match-body__lineup_pitch">
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+                <div class="match-body__lineup_pitch_spacer"></div>
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+                <div class="match-body__lineup_pitch_row">
+                    <div class="match-body__lineup_pitch_player">
+                        <div class="match-body__lineup_pitch_player_number_2">00</div>
+                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                    </div>
+                </div>
+            </div>
+            <div class="match-body__lineup_team">Everton</div>
+            <div class="match-body__lineup_sub">
+                <div class="match-body__lineup_sub_title">
+                    <div class="match-body__lineup_sub_side">Arsenal</div>
+                    <div class="match-body__lineup_sub_name">Zmiany</div>
+                    <div class="match-body__lineup_sub_side">Everton</div>
+                </div>
+                <div class="match-body__lineup_sub_container">
+                    <div class="match-body__lineup_sub_container_left">
+                        <div class="match-body__lineup_sub_container_player">
+                            <div class="change_icon"></div>
+                            <div class="match-body__lineup_sub_container_player_name">
+                                <span>00</span>
+                                The Name
+                            </div>
+                        </div>
+                        <div class="match-body__lineup_sub_container_player">
+                            <div class="change_icon"></div>
+                            <div class="match-body__lineup_sub_container_player_name">
+                                <span>00</span>
+                                The Name
+                            </div>
+                        </div>
+                        <div class="match-body__lineup_sub_container_player">
+                            <div class="match-body__lineup_sub_container_player_name">
+                                <span>00</span>
+                                The Name
+                            </div>
+                        </div>
+                        <div class="match-body__lineup_sub_container_player">
+                            <div class="match-body__lineup_sub_container_player_name">
+                                <span>00</span>
+                                The Name
+                            </div>
+                        </div>
+                    </div>
+                    <div class="match-body__lineup_sub_container_right">
+                        <div class="match-body__lineup_sub_container_player">
+                            <div class="change_icon"></div>
+                            <div class="match-body__lineup_sub_container_player_name">
+                                The Name
+                                <span>00</span>
+                            </div>
+                        </div>
+                        <div class="match-body__lineup_sub_container_player">
+                            <div class="match-body__lineup_sub_container_player_name">
+                                The Name
+                                <span>00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="match-body__lineup_manager_name">Manager</div>
+            <div class="match-body__lineup_manager">
+                <div class="match-body__lineup_manager_side">The Name</div>
+                <div class="match-body__lineup_manager_side">The Name</div>
+            </div>
+        </div>
+        <div class="match-body__stats" id="stats">
+            <div class="match-body__stats_item">Arsenal</div>
+            <div class="match-body__stats_middle">Statystyki</div>
+            <div class="match-body__stats_item_2">Everton</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Strzały</div>
+            <div class="match-body__stats_item_2">00</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Faule</div>
+            <div class="match-body__stats_item_2">00</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Żółte kartki</div>
+            <div class="match-body__stats_item_2">00</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Czerwone kartki</div>
+            <div class="match-body__stats_item_2">00</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Karne</div>
+            <div class="match-body__stats_item_2">00</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Spalony</div>
+            <div class="match-body__stats_item_2">00</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Rożne</div>
+            <div class="match-body__stats_item_2">00</div>
+            <div class="match-body__stats_item">00</div>
+            <div class="match-body__stats_middle">Wolne</div>
+            <div class="match-body__stats_item_2">00</div>
+        </div>
+    </div>
+</div>
 {% endblock %}

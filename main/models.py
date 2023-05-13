@@ -14,6 +14,19 @@ class Team(models.Model):
     stadium = models.ForeignKey(Stadium, on_delete=models.CASCADE)
 
 class Player(models.Model):
+    class PositionChoices(models.TextChoices):
+        GK = 'GK'
+        LB = 'LB'
+        CB = 'CB'
+        RB = 'RB'
+        LM = 'LM'
+        RM = 'RM'
+        CM = 'CM'
+        LS = 'LS'
+        RS = 'RS'
+        CS = 'CS'
+        SUB = 'SUB'
+
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=50)
     shirt_number = models.IntegerField()
@@ -21,6 +34,7 @@ class Player(models.Model):
     height = models.IntegerField()
     weight = models.IntegerField()
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    position = models.CharField(max_length=3, choices=PositionChoices.choices)
 
 class Match(models.Model):
     host = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='host')
@@ -32,6 +46,7 @@ class Match(models.Model):
 class Event(models.Model):
     class EventChoices(models.TextChoices):
         GOAL = 'GOAL', _('Gol')
+        SHOT = 'SHOT', _('Strzał')
         FOUL = 'FOUL', _('Faul')
         YELLOW_CARD = 'YCAR', _('Żółta kartka')
         RED_CARD = 'RCAR', _('Czerwona kartka')
