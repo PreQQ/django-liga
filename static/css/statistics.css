@@ -32,9 +32,6 @@
     margin-bottom: 16px;
 }
 
-.stats-container__table {
-}
-
 .stats-container__table_names {
     display: flex;
     width: 100%;

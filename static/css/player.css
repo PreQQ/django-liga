@@ -1,0 +1,31 @@
+.player {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.player-container {
+    width: 100%;
+    max-width: 600px;
+    height: max-content;
+    background: rgb(44, 44, 44);
+    padding: 32px 16px;
+}
+
+.player-container__name {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 32px;
+}
+
+.player-container__item {
+    font-size: 16px;
+    font-weight: 400;
+    color: lightgrey;
+    margin-bottom: 16px;
+}
+
+.player-container__item span {
+    font-weight: 500;
+}
