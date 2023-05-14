@@ -57,6 +57,11 @@
     color: lightgrey;
 }
 
+.table-team__club a {
+    text-decoration: none;
+    color: lightgrey;
+}
+
 .table-team__club {
     flex: 1;
 }

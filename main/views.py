@@ -23,8 +23,11 @@ def table(request):
 def statistics(request):
     return render(request, "statistics.html")
 
-def club(request):
-    return render(request, "club.html")
+def club(request, club_id):
+    players = [1,2,3,4]
+    rows = [1,2,3,4,5]
+    matches = [1,2,3,4,5]
+    return render(request, "club.html", {"players": players, "matches": matches, "rows": rows})
 
-def player(request):
-    return render(request, "player.html")
+def player(request, player_id):
+    return render(request, "player.html", {"player": player_id})

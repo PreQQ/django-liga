@@ -1,4 +1,112 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block title %}Strona główna{% endblock %} {% block body_content %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var show = function (elem) {
+        elem.style.display = "block";
+    };
 
-{% block title %}Strona główna{% endblock %}
-{% block body_content %}<h1>Club</h1>{% endblock %}
+    var hide = function (elem) {
+        elem.style.display = "none";
+    };
+
+    var toggle = function (elem, elem2, elem3) {
+        if (window.getComputedStyle(elem).display === "block") {
+            hide(elem);
+            show(elem2);
+            show(elem3);
+            return;
+        }
+
+        show(elem);
+        hide(elem2);
+        hide(elem3);
+    };
+
+    document.addEventListener(
+        "click",
+        function (event) {
+            if (event.target.classList.contains("toggle-matches")) {
+                event.preventDefault();
+
+                var content = document.querySelector("#matches");
+                var content2 = document.querySelector("#info");
+                var content3 = document.querySelector("#players");
+                if (!content) return;
+
+                toggle(content, content2, content3);
+            }
+            if (event.target.classList.contains("toggle-info")) {
+                event.preventDefault();
+
+                var content2 = document.querySelector("#matches");
+                var content = document.querySelector("#info");
+                var content3 = document.querySelector("#players");
+                if (!content) return;
+
+                toggle(content, content2, content3);
+            }
+            if (event.target.classList.contains("toggle-players")) {
+                event.preventDefault();
+
+                var content3 = document.querySelector("#matches");
+                var content2 = document.querySelector("#info");
+                var content = document.querySelector("#players");
+                if (!content) return;
+
+                toggle(content, content2, content3);
+            }
+        },
+        false
+    );
+</script>
+<div class="club">
+  <div class="club-nav">
+    <a class="club-nav__button toggle-matches" href="#matches">Mecze</a>
+    <a class="club-nav__button toggle-info" href="#info">Informacje</a>
+    <a class="club-nav__button toggle-players" href="#players">Zawodnicy</a>
+  </div>
+  <div class="club-matches  toggle-content" id="matches" style="display: none">
+    <div class="outer-matches">
+        {% for row in rows %}<div class="matches">
+          <div class="matches-header">Kolejka {{ row }} z 38</div>
+          <div class="matches-body">
+            {% for match in matches %}
+              <a href="{% url 'main:match' match %}">
+                <div class="matches-content">
+                  <div class="matches-content__teams">
+                  <div class="matches-content__teams_item">Everton <span>1</span></div>
+                  <div class="matches-content__teams_item matches-winner">Arsenal <span>5</span></div>
+                </div>
+                <div class="matches-content__date">
+                  Sob, Maj 13
+                </br>
+                <span>16:00</span>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+          </div>
+        </div>{% endfor %}
+    </div>
+  </div>
+    <div class="club-info toggle-content"  id="info">
+      <div class="club-info__name">Arsenal</div>
+      <div class="club-info__item"><span>Manager: </span>Firstname Lastname</div>
+      <div class="club-info__item"><span>Owner: </span>Firstname Lastname</div>
+      <div class="club-info__item"><span>Established: </span>1956</div>
+      <div class="club-info__item"><span>Stadium: </span>Name (Localization)</div>
+    </div>
+    <div class="club-players-outer toggle-content"  id="players" style="display: none">
+    <div class="club-players">
+        {% for player in players %}
+        <a href="{% url 'main:player' player %}">
+            <div class="club-players__container">
+                <div class="club-players__container_name">Firstname Lastname</div>
+                <div class="club-players__container_position">GK</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

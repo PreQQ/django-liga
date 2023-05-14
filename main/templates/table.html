@@ -16,7 +16,7 @@
         </div>
         {% for value in teams %}
         <div class="table-team">
-            <div class="table-team__club">{{ value }} Name</div>
+            <div class="table-team__club"><a href="{% url 'main:club' value %}">{{ value }} Name</a></div>
             <div class="table-team__content">00</div>
             <div class="table-team__content">00</div>
             <div class="table-team__content">00</div>
