@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block title %}Strona główna{% endblock %} {% block body_content %}
+{% extends "layout.html" %} {% block title %}Klub{% endblock %} {% block body_content %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     var show = function (elem) {
@@ -10,13 +10,6 @@
     };
 
     var toggle = function (elem, elem2, elem3) {
-        if (window.getComputedStyle(elem).display === "block") {
-            hide(elem);
-            show(elem2);
-            show(elem3);
-            return;
-        }
-
         show(elem);
         hide(elem2);
         hide(elem3);

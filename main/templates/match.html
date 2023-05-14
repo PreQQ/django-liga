@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block title %}Match{% endblock %} {% block body_content %}
+{% extends "layout.html" %} {% block title %}Mecz{% endblock %} {% block body_content %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     var show = function (elem) {
@@ -10,12 +10,6 @@
     };
 
     var toggle = function (elem, elem2) {
-        if (window.getComputedStyle(elem).display === "block") {
-            hide(elem);
-            show(elem2);
-            return;
-        }
-
         show(elem);
         hide(elem2);
     };
@@ -235,34 +229,36 @@
                 <div class="match-body__lineup_manager_side">The Name</div>
             </div>
         </div>
-        <div class="match-body__stats" id="stats">
-            <div class="match-body__stats_item">Arsenal</div>
-            <div class="match-body__stats_middle">Statystyki</div>
-            <div class="match-body__stats_item_2">Everton</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Strzały</div>
-            <div class="match-body__stats_item_2">00</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Faule</div>
-            <div class="match-body__stats_item_2">00</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Żółte kartki</div>
-            <div class="match-body__stats_item_2">00</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Czerwone kartki</div>
-            <div class="match-body__stats_item_2">00</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Karne</div>
-            <div class="match-body__stats_item_2">00</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Spalony</div>
-            <div class="match-body__stats_item_2">00</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Rożne</div>
-            <div class="match-body__stats_item_2">00</div>
-            <div class="match-body__stats_item">00</div>
-            <div class="match-body__stats_middle">Wolne</div>
-            <div class="match-body__stats_item_2">00</div>
+        <div class="atch-body__stats-outer" id="stats" style="display: none">
+            <div class="match-body__stats">
+                <div class="match-body__stats_item">Arsenal</div>
+                <div class="match-body__stats_middle">Statystyki</div>
+                <div class="match-body__stats_item_2">Everton</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Strzały</div>
+                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Faule</div>
+                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Żółte kartki</div>
+                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Czerwone kartki</div>
+                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Karne</div>
+                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Spalony</div>
+                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Rożne</div>
+                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_middle">Wolne</div>
+                <div class="match-body__stats_item_2">00</div>
+            </div>
         </div>
     </div>
 </div>

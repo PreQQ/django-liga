@@ -1,4 +1,95 @@
-{% extends "layout.html" %}
-
-{% block title %}Strona główna{% endblock %}
-{% block body_content %}<h1>Statistics</h1>{% endblock %}
+{% extends "layout.html" %} {% block title %}Statystyki{% endblock %} {% block body_content %}
+<div class="stats-outer">
+    <div class="stats">
+        <div class="stats-header">Statystyki</div>
+        <div class="stats-container">
+            <div class="stats-container__title">Gole</div>
+            <div class="stats-container__table">
+                <div class="stats-container__table_names">
+                    <div class="stats-container__table_names_item">Gracze</div>
+                    <div class="stats-container__table_names_item">Liczba goli</div>
+                </div>
+                {% for player in goals %}
+                <div class="stats-container__table_item">
+                    <div class="stats-container__table_item_info">
+                        <div class="stats-container__table_item_info_position">{{player}}</div>
+                        <div class="stats-container__table_item_info_content">
+                            <span>Firstname Lastname</span>
+                            <br />
+                            Arsenal
+                        </div>
+                    </div>
+                    <div class="stats-container__table_item_outcome">00</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="stats-container">
+            <div class="stats-container__title">Asysty</div>
+            <div class="stats-container__table">
+                <div class="stats-container__table_names">
+                    <div class="stats-container__table_names_item">Gracze</div>
+                    <div class="stats-container__table_names_item">Liczba asyst</div>
+                </div>
+                {% for player in assists %}
+                <div class="stats-container__table_item">
+                    <div class="stats-container__table_item_info">
+                        <div class="stats-container__table_item_info_position">{{player}}</div>
+                        <div class="stats-container__table_item_info_content">
+                            <span>Firstname Lastname</span>
+                            <br />
+                            Arsenal
+                        </div>
+                    </div>
+                    <div class="stats-container__table_item_outcome">00</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="stats-container">
+            <div class="stats-container__title">Zółte kartki</div>
+            <div class="stats-container__table">
+                <div class="stats-container__table_names">
+                    <div class="stats-container__table_names_item">Gracze</div>
+                    <div class="stats-container__table_names_item">Liczba kartek</div>
+                </div>
+                {% for player in yellows %}
+                <div class="stats-container__table_item">
+                    <div class="stats-container__table_item_info">
+                        <div class="stats-container__table_item_info_position">{{player}}</div>
+                        <div class="stats-container__table_item_info_content">
+                            <span>Firstname Lastname</span>
+                            <br />
+                            Arsenal
+                        </div>
+                    </div>
+                    <div class="stats-container__table_item_outcome">00</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="stats-container">
+            <div class="stats-container__title">Czerwone kartki</div>
+            <div class="stats-container__table">
+                <div class="stats-container__table_names">
+                    <div class="stats-container__table_names_item">Gracze</div>
+                    <div class="stats-container__table_names_item">Liczba kartek</div>
+                </div>
+                {% for player in reds %}
+                <div class="stats-container__table_item">
+                    <div class="stats-container__table_item_info">
+                        <div class="stats-container__table_item_info_position">{{player}}</div>
+                        <div class="stats-container__table_item_info_content">
+                            <span>Firstname Lastname</span>
+                            <br />
+                            Arsenal
+                        </div>
+                    </div>
+                    <div class="stats-container__table_item_outcome">00</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -215,11 +215,6 @@
     padding: 0 16px 16px 16px;
 }
 
-.match-body__lineup_sub_container_player {
-    /* display: flex; */
-    /* align-items: center; */
-}
-
 .match-body__lineup_sub_container_player_name {
     font-size: 14px;
     font-weight: 500;
@@ -250,7 +245,7 @@
 }
 
 .match-body__stats {
-    display: none;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 32px 16px;
     row-gap: 12px;

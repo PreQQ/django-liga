@@ -21,7 +21,11 @@ def table(request):
     return render(request, "table.html", {"teams": teams})
 
 def statistics(request):
-    return render(request, "statistics.html")
+    goals = [1,2,3,4,5]
+    assists = [1,2,3,4,5]
+    yellows = [1,2,3,4,5]
+    reds = [1,2,3,4]
+    return render(request, "statistics.html", {"goals": goals, "assists": assists, "yellows": yellows, "reds": reds})
 
 def club(request, club_id):
     players = [1,2,3,4]
