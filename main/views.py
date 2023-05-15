@@ -1,7 +1,7 @@
 import genericpath
 from django.shortcuts import get_object_or_404, render
 
-from .models import Match
+from .models import Match, Team, Player
 
 # Create your views here.
 def views(request):
@@ -17,6 +17,8 @@ def match(request, match_id):
     return render(request, "match.html", {"match": match_id})
 
 def table(request):
+    tteams = list(Team.objects.all().values_list('name', flat=True)) 
+    print(tteams)
     teams = [1,2,3]
     return render(request, "table.html", {"teams": teams})
 
@@ -34,4 +36,6 @@ def club(request, club_id):
     return render(request, "club.html", {"players": players, "matches": matches, "rows": rows})
 
 def player(request, player_id):
-    return render(request, "player.html", {"player": player_id})
+    player = get_object_or_404(Player, pk=player_id)
+    return render(request, "player.html", {"player": player})
+    # return render(request, "match.html", {"match": player})
