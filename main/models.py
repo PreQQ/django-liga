@@ -34,7 +34,7 @@ class Player(models.Model):
     height = models.IntegerField()
     weight = models.IntegerField()
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    position = models.CharField(max_length=3, choices=PositionChoices.choices)
+    position = models.CharField(max_length=3, choices=PositionChoices.choices, default="SUB")
 
 class Match(models.Model):
     host = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='host')
