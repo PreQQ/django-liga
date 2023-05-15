@@ -1,4 +1,4 @@
-{% extends "layout.html" %} {% block title %}Klub{% endblock %} {% block body_content %}
+{% extends "layout.html" %} {% block title %}Klub - {{team.name}}{% endblock %} {% block body_content %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
     var show = function (elem) {
@@ -83,19 +83,19 @@
     </div>
   </div>
     <div class="club-info toggle-content"  id="info">
-      <div class="club-info__name">Arsenal</div>
-      <div class="club-info__item"><span>Manager: </span>Firstname Lastname</div>
-      <div class="club-info__item"><span>Owner: </span>Firstname Lastname</div>
-      <div class="club-info__item"><span>Established: </span>1956</div>
-      <div class="club-info__item"><span>Stadium: </span>Name (Localization)</div>
+      <div class="club-info__name">{{team.name}}</div>
+      <div class="club-info__item"><span>Manager: </span>{{team.manager}}</div>
+      <div class="club-info__item"><span>Owner: </span>{{team.owner}}</div>
+      <div class="club-info__item"><span>Established: </span>{{team.established}}</div>
+      <div class="club-info__item"><span>Stadium: </span>{{team.stadium.name}} ({{team.stadium.localization}})</div>
     </div>
     <div class="club-players-outer toggle-content"  id="players" style="display: none">
     <div class="club-players">
         {% for player in players %}
-        <a href="{% url 'main:player' player %}">
+        <a href="{% url 'main:player' player.id %}">
             <div class="club-players__container">
-                <div class="club-players__container_name">Firstname Lastname</div>
-                <div class="club-players__container_position">GK</div>
+                <div class="club-players__container_name">{{player.first_name}} {{player.last_name}}</div>
+                <div class="club-players__container_position">{{player.position}}</div>
             </div>
         </a>
         {% endfor %}

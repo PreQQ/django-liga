@@ -2,10 +2,6 @@ import genericpath
 from django.shortcuts import get_object_or_404, render
 
 from .models import Match, Team, Player
-
-# Create your views here.
-def views(request):
-    return render(request, "home.html")
     
 def matches(request):
     rows = [1,2,3,4,5]
@@ -30,10 +26,11 @@ def statistics(request):
     return render(request, "statistics.html", {"goals": goals, "assists": assists, "yellows": yellows, "reds": reds})
 
 def club(request, club_id):
-    players = [1,2,3,4]
+    team = get_object_or_404(Team, pk=club_id)
+    players = team.player_set.all()
     rows = [1,2,3,4,5]
     matches = [1,2,3,4,5]
-    return render(request, "club.html", {"players": players, "matches": matches, "rows": rows})
+    return render(request, "club.html", {"team": team, "players": players, "matches": matches, "rows": rows})
 
 def player(request, player_id):
     player = get_object_or_404(Player, pk=player_id)
