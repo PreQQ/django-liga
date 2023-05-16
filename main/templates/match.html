@@ -41,19 +41,38 @@
 </script>
 <div class="match-container">
     <div class="match-header">
-        <div class="match-header__date">Sob, Maj 13</div>
+        <div class="match-header__date">{{match.date}}</div>
         <div class="match-header__teams">
-            <div class="match-header__teams_name">Arsenal</div>
-            <div class="match-header__teams_outcome">2 - 0</div>
-            <div class="match-header__teams_name">Everton</div>
+            <div class="match-header__teams_name">{{match.host.name}}</div>
+            <div class="match-header__teams_outcome">{{hostGoals}} - {{guestGoals}}</div>
+            <div class="match-header__teams_name2">{{match.guest.name}}</div>
         </div>
+        {% if goals %}
         <div class="match-header_goals_icon">Gole</div>
+        {% endif %}
         <div class="match-header__goals_container">
             <div class="match-header__goals_left">
-                <div class="match-header__goals_left_item">Fabian Schar 24'</div>
-                <div class="match-header__goals_left_item">Fabian Schar 71' (K)</div>
+                {% for item in goals %} {% if item.player.team.id == match.host.id and item.event_type != 'GPEN' %}
+                <div class="match-header__goals_left_item">
+                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}'
+                </div>
+                {% elif item.player.team.id == match.host.id %}
+                <div class="match-header__goals_left_item">
+                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (K)
+                </div>
+                {% endif %} {% endfor %}
             </div>
-            <div class="match-header__goals_right"></div>
+            <div class="match-header__goals_right">
+                {% for item in goals %} {% if item.player.team.id == match.guest.id and item.event_type != 'GPEN' %}
+                <div class="match-header__goals_left_item">
+                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}'
+                </div>
+                {% elif item.player.team.id == match.guest.id %}
+                <div class="match-header__goals_left_item">
+                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (K)
+                </div>
+                {% endif %} {% endfor %}
+            </div>
         </div>
     </div>
     <div class="match-switches">
@@ -62,7 +81,7 @@
     </div>
     <div class="match-body">
         <div class="match-body__lineup toggle-content" id="team">
-            <div class="match-body__lineup_team">Arsenal</div>
+            <div class="match-body__lineup_team">{{match.host.name}}</div>
             <div class="match-body__lineup_pitch">
                 <div class="match-body__lineup_pitch_row">
                     <div class="match-body__lineup_pitch_player">
@@ -170,12 +189,12 @@
                     </div>
                 </div>
             </div>
-            <div class="match-body__lineup_team">Everton</div>
+            <div class="match-body__lineup_team">{{match.guest.name}}</div>
             <div class="match-body__lineup_sub">
+                <div class="match-body__lineup_name">Zmiany</div>
                 <div class="match-body__lineup_sub_title">
-                    <div class="match-body__lineup_sub_side">Arsenal</div>
-                    <div class="match-body__lineup_sub_name">Zmiany</div>
-                    <div class="match-body__lineup_sub_side">Everton</div>
+                    <div class="match-body__lineup_sub_side">{{match.host.name}}</div>
+                    <div class="match-body__lineup_sub_side">{{match.guest.name}}</div>
                 </div>
                 <div class="match-body__lineup_sub_container">
                     <div class="match-body__lineup_sub_container_left">
@@ -225,39 +244,39 @@
             </div>
             <div class="match-body__lineup_manager_name">Manager</div>
             <div class="match-body__lineup_manager">
-                <div class="match-body__lineup_manager_side">The Name</div>
-                <div class="match-body__lineup_manager_side">The Name</div>
+                <div class="match-body__lineup_manager_side">{{match.host.manager}}</div>
+                <div class="match-body__lineup_manager_side">{{match.guest.manager}}</div>
             </div>
         </div>
         <div class="atch-body__stats-outer" id="stats" style="display: none">
             <div class="match-body__stats">
-                <div class="match-body__stats_item">Arsenal</div>
+                <div class="match-body__stats_item">{{match.host.name}}</div>
                 <div class="match-body__stats_middle">Statystyki</div>
-                <div class="match-body__stats_item_2">Everton</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{match.guest.name}}</div>
+                <div class="match-body__stats_item">{{eventsHost.shots}}</div>
                 <div class="match-body__stats_middle">Strzały</div>
-                <div class="match-body__stats_item_2">00</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.shots}}</div>
+                <div class="match-body__stats_item">{{eventsHost.fouls}}</div>
                 <div class="match-body__stats_middle">Faule</div>
-                <div class="match-body__stats_item_2">00</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.fouls}}</div>
+                <div class="match-body__stats_item">{{eventsHost.yellows}}</div>
                 <div class="match-body__stats_middle">Żółte kartki</div>
-                <div class="match-body__stats_item_2">00</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.yellows}}</div>
+                <div class="match-body__stats_item">{{eventsHost.reds}}</div>
                 <div class="match-body__stats_middle">Czerwone kartki</div>
-                <div class="match-body__stats_item_2">00</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.reds}}</div>
+                <div class="match-body__stats_item">{{eventsHost.pens}}</div>
                 <div class="match-body__stats_middle">Karne</div>
-                <div class="match-body__stats_item_2">00</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.pens}}</div>
+                <div class="match-body__stats_item">{{eventsHost.offsides}}</div>
                 <div class="match-body__stats_middle">Spalony</div>
-                <div class="match-body__stats_item_2">00</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.offsides}}</div>
+                <div class="match-body__stats_item">{{eventsHost.corners}}</div>
                 <div class="match-body__stats_middle">Rożne</div>
-                <div class="match-body__stats_item_2">00</div>
-                <div class="match-body__stats_item">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.corners}}</div>
+                <div class="match-body__stats_item">{{eventsHost.freekicks}}</div>
                 <div class="match-body__stats_middle">Wolne</div>
-                <div class="match-body__stats_item_2">00</div>
+                <div class="match-body__stats_item_2">{{eventsGuest.freekicks}}</div>
             </div>
         </div>
     </div>

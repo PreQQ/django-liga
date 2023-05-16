@@ -40,8 +40,86 @@ def matches(request):
     return render(request, "matches.html", {"matches": matches,"rowsMax": rowsMax})
 
 def match(request, match_id):
-    # matchFinder = get_object_or_404(Match, pk=match_id)
-    return render(request, "match.html", {"match": match_id})
+    match = get_object_or_404(Match, pk=match_id)
+    players = list(Player.objects.all())
+    goals = list(Event.objects.all().filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+
+    hostGoals = 0
+    guestGoals = 0
+
+    eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+
+    for event in eventsTT:
+        teamId = players[event[2]].team.id
+
+        if teamId == match.host.id:
+            hostGoals += 1
+        elif teamId == match.guest.id:   
+            guestGoals += 1 
+
+    # changes = list(Event.objects.all().filter(match=match.id))
+
+    eventsHost = {
+        "shots": 0,
+        "fouls": 0,
+        "yellows": 0,
+        "reds": 0,
+        "pens": 0,
+        "offsides": 0,
+        "corners": 0,
+        "freekicks": 0
+    }
+
+    eventsGuest = {
+        "shots": 0,
+        "fouls": 0,
+        "yellows": 0,
+        "reds": 0,
+        "pens": 0,
+        "offsides": 0,
+        "corners": 0,
+        "freekicks": 0
+    }
+
+    events = list(Event.objects.all().filter(match=match.id))
+
+    for event in events:
+        if event.player.team.id == match.host.id:
+                if event.event_type == 'SHOT':
+                    eventsHost["shots"] += 1
+                elif event.event_type == 'FOUL':
+                    eventsHost["fouls"] += 1
+                elif event.event_type == 'YCAR':
+                    eventsHost["yellows"] += 1
+                elif event.event_type == 'RCAR':
+                    eventsHost["reds"] += 1
+                elif event.event_type == 'PENL':
+                    eventsHost["pens"] += 1
+                elif event.event_type == 'OFFS':
+                    eventsHost["offides"] += 1
+                elif event.event_type == 'CRNR':
+                    eventsHost["corners"] += 1
+                elif event.event_type == 'FKCK':
+                    eventsHost["freekicks"] += 1
+        elif event.player.team.id == match.guest.id:
+                if event.event_type == 'SHOT':
+                    eventsGuest["shots"] += 1
+                elif event.event_type == 'FOUL':
+                    eventsGuest["fouls"] += 1
+                elif event.event_type == 'YCAR':
+                    eventsGuest["yellows"] += 1
+                elif event.event_type == 'RCAR':
+                    eventsGuest["reds"] += 1
+                elif event.event_type == 'PENL':
+                    eventsGuest["pens"] += 1
+                elif event.event_type == 'OFFS':
+                    eventsGuest["offides"] += 1
+                elif event.event_type == 'CRNR':
+                    eventsGuest["corners"] += 1
+                elif event.event_type == 'FKCK':
+                    eventsGuest["freekicks"] += 1
+
+    return render(request, "match.html", {"match": match, "goals": goals, "hostGoals": hostGoals, "guestGoals": guestGoals, "eventsHost": eventsHost, "eventsGuest": eventsGuest})
 
 def table(request):
     players = list(Player.objects.all())
@@ -177,8 +255,6 @@ def table(request):
 
 
     calculateTable(matches, TT)
-
-    print(TT)
     return render(request, "table.html", {"teams": TT})
 
 def statistics(request):
@@ -249,3 +325,8 @@ def club(request, club_id):
 def player(request, player_id):
     player = get_object_or_404(Player, pk=player_id)
     return render(request, "player.html", {"player": player})
+
+def players(request):
+    playersArray = list(Player.objects.all())
+
+    return render(request, "players.html", {"players": playersArray})

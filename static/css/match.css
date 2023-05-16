@@ -20,8 +20,9 @@
 }
 
 .match-header__teams {
-    display: flex;
+    display: grid;
     justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: 24px 0;
 }
 
@@ -31,10 +32,18 @@
     color: lightgrey;
 }
 
+.match-header__teams_name2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: lightgrey;
+    text-align: right;
+}
+
 .match-header__teams_outcome {
     font-size: 18px;
     font-weight: 700;
     color: lightgrey;
+    text-align: center;
 }
 
 .match-header_goals_icon {
@@ -177,10 +186,12 @@
     color: lightgrey;
 }
 
-.match-body__lineup_sub_name {
+.match-body__lineup_name {
     font-size: 16px;
     font-weight: 700;
     color: lightgrey;
+    text-align: center;
+    margin-top: 12px;
 }
 
 .match-body__lineup_sub_container {

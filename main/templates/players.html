@@ -1,0 +1,15 @@
+{% extends "layout.html" %} {% block title %}Zawodnicy{% endblock %} {% block body_content %}
+<div class="players">
+    <div class="players-container">
+        {% for player in players %}
+        <a href="{% url 'main:player' player.id %}">
+            <div class="players-container__item">
+                <div class="players-container__item_name">{{player.first_name}} {{player.last_name}}</div>
+                <div class="players-container__item_team">{{player.team.name}}</div>
+                <div class="players-container__item_position">{{player.position}}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

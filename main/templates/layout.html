@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/club.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/statistics.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/player.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/players.css' %}" />
     </head>
     <body>
         <header class="main-header">
@@ -24,6 +25,9 @@
                     </a>
                     <a href="{% url 'main:statistics' %}">
                         <li>styatystyki</li>
+                    </a>
+                    <a href="{% url 'main:players' %}">
+                        <li>zawodnicy</li>
                     </a>
                 </ul>
             </nav>
