@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block title %}Mecze{% endblock %} {% block body_content %}<div class="outer-matches">
   {% for row in rows %}<div class="matches">
-    <div class="matches-header">Kolejka {{ row }} z 38</div>
+    <div class="matches-header">Kolejka {{ row }} z {{rowsMax}}</div>
     <div class="matches-body">
       {% for match in matches %}
         <a href="{% url 'main:match' match %}">
