@@ -1,7 +1,7 @@
 import genericpath
 from django.shortcuts import get_object_or_404, render
 
-from .models import Match, Team, Player, Event
+from .models import Match, Team, Player, Event, Change
 from django.db.models import Count, Q
     
 def matches(request):
@@ -57,7 +57,17 @@ def match(request, match_id):
         elif teamId == match.guest.id:   
             guestGoals += 1 
 
-    # changes = list(Event.objects.all().filter(match=match.id))
+    changes = list(Change.objects.all().filter(match=match.id))
+
+    changesHost = []
+    changesGuest = []
+
+    for change in changes:
+        if change.in_player.team.id == match.host.id:
+            changesHost.append(change)
+        elif change.in_player.team.id == match.guest.id:
+            changesGuest.append(change)
+
 
     eventsHost = {
         "shots": 0,
@@ -119,7 +129,7 @@ def match(request, match_id):
                 elif event.event_type == 'FKCK':
                     eventsGuest["freekicks"] += 1
 
-    return render(request, "match.html", {"match": match, "goals": goals, "hostGoals": hostGoals, "guestGoals": guestGoals, "eventsHost": eventsHost, "eventsGuest": eventsGuest})
+    return render(request, "match.html", {"match": match, "goals": goals, "hostGoals": hostGoals, "guestGoals": guestGoals, "eventsHost": eventsHost, "eventsGuest": eventsGuest, "changesHost": changesHost, "changesGuest": changesGuest})
 
 def table(request):
     players = list(Player.objects.all())

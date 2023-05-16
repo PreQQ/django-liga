@@ -190,6 +190,7 @@
                 </div>
             </div>
             <div class="match-body__lineup_team">{{match.guest.name}}</div>
+            {% if changesHost or changesGuest %}
             <div class="match-body__lineup_sub">
                 <div class="match-body__lineup_name">Zmiany</div>
                 <div class="match-body__lineup_sub_title">
@@ -198,50 +199,32 @@
                 </div>
                 <div class="match-body__lineup_sub_container">
                     <div class="match-body__lineup_sub_container_left">
+                        {% for change in changesHost %}
                         <div class="match-body__lineup_sub_container_player">
                             <div class="change_icon"></div>
                             <div class="match-body__lineup_sub_container_player_name">
-                                <span>00</span>
-                                The Name
+                                <span>{{change.minute}}'</span>
+                                <span>{{change.in_player.shirt_number}}</span>
+                                {{change.in_player.first_name}} {{change.in_player.last_name}}
                             </div>
                         </div>
-                        <div class="match-body__lineup_sub_container_player">
-                            <div class="change_icon"></div>
-                            <div class="match-body__lineup_sub_container_player_name">
-                                <span>00</span>
-                                The Name
-                            </div>
-                        </div>
-                        <div class="match-body__lineup_sub_container_player">
-                            <div class="match-body__lineup_sub_container_player_name">
-                                <span>00</span>
-                                The Name
-                            </div>
-                        </div>
-                        <div class="match-body__lineup_sub_container_player">
-                            <div class="match-body__lineup_sub_container_player_name">
-                                <span>00</span>
-                                The Name
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div class="match-body__lineup_sub_container_right">
+                        {% for change in changesGuest %}
                         <div class="match-body__lineup_sub_container_player">
-                            <div class="change_icon"></div>
+                            <div class="change_icon_2"></div>
                             <div class="match-body__lineup_sub_container_player_name">
-                                The Name
-                                <span>00</span>
+                                {{change.in_player.first_name}} {{change.in_player.last_name}}
+                                <span>{{change.in_player.shirt_number}}</span>
+                                <span>{{change.minute}}'</span>
                             </div>
                         </div>
-                        <div class="match-body__lineup_sub_container_player">
-                            <div class="match-body__lineup_sub_container_player_name">
-                                The Name
-                                <span>00</span>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
+            {% endif %}
             <div class="match-body__lineup_manager_name">Manager</div>
             <div class="match-body__lineup_manager">
                 <div class="match-body__lineup_manager_side">{{match.host.manager}}</div>
