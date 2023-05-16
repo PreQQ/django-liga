@@ -59,11 +59,13 @@
 }
 
 .matches-content__teams_item {
+    position: relative;
     color: lightgrey;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 40px;
+    width: 100%;
 }
 
 .matches-content__date {
@@ -80,5 +82,8 @@
 }
 
 .matches-winner {
-    border-bottom: 1px solid rgb(47, 255, 61);
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    background: rgb(47, 255, 61);
 }

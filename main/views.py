@@ -8,11 +8,36 @@ def matches(request):
     teamsLength = Team.objects.count()
     rowsMax = (teamsLength - 1) * 2
 
-    matchess = Match.objects.all()
-    print(matchess)
-    rows = [1,2,3,4,5]
-    matches = [1,2,3,4,5]
-    return render(request, "matches.html", {"matches": matches, "rows": rows, "rowsMax": rowsMax})
+    matchesTT = Match.objects.all()
+    matches = [dict(round = i + 1, row = []) for i in range(rowsMax)]
+    players = list(Player.objects.all())
+
+    for match in matchesTT:
+        host = 0
+        guest = 0
+        outcome = 0
+
+        eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+
+        for event in eventsTT:
+            teamId = players[event[2]].team.id
+
+            if teamId == match.host.id:
+                host += 1
+            elif teamId == match.guest.id:   
+                guest += 1 
+
+            
+        if host - guest < 0:
+            outcome = -1
+        elif host - guest > 0:
+            outcome = 1 
+
+        for x in matches:
+            if int(x["round"]) == int(match.match_round):
+                x["row"].append(dict(id = match.id, date = match.date, match_round = match.match_round, goalsHost = host, goalsGuest = guest, outcome = outcome, host = match.host, guest = match.guest))
+
+    return render(request, "matches.html", {"matches": matches,"rowsMax": rowsMax})
 
 def match(request, match_id):
     # matchFinder = get_object_or_404(Match, pk=match_id)
