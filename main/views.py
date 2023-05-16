@@ -57,6 +57,66 @@ def match(request, match_id):
         elif teamId == match.guest.id:   
             guestGoals += 1 
 
+    pitchTeamHost = [None, None, None, None, None, None, None, None, None, None, None]
+    pitchTeamGuest = [None, None, None, None, None, None, None, None, None, None, None]
+
+    playersHost = list(Player.objects.all().filter(team=match.host.id))
+    playersGuest = list(Player.objects.all().filter(team=match.guest.id))
+
+    for i in playersHost:
+        player = i.position
+        if player == 'GK' and pitchTeamHost[0] == None:
+            pitchTeamHost[0] = i
+        elif player == 'LB' and pitchTeamHost[1] == None:
+            pitchTeamHost[1] = i
+        elif player == 'CB' and (pitchTeamHost[2] == None or pitchTeamHost[3] == None):
+            if pitchTeamHost[2] != None:
+                pitchTeamHost[3] = i
+            else:
+                pitchTeamHost[2] = i
+        elif player == 'RB' and pitchTeamHost[4] == None:
+            pitchTeamHost[4] = i
+        elif player == 'LM' and pitchTeamHost[5] == None:
+            pitchTeamHost[5] = i
+        elif player == 'RM' and pitchTeamHost[6] == None:
+            pitchTeamHost[6] = i
+        elif player == 'CM' and pitchTeamHost[7] == None:
+            pitchTeamHost[7] = i
+        elif player == 'LS' and pitchTeamHost[8] == None:
+            pitchTeamHost[8] = i
+        elif player == 'RS' and pitchTeamHost[9] == None:
+            pitchTeamHost[9] = i
+        elif player == 'CS' and pitchTeamHost[10] == None:
+            pitchTeamHost[10] = i
+
+    for i in playersGuest:
+        player = i.position
+        if player == 'GK' and pitchTeamGuest[0] == None:
+            pitchTeamGuest[0] = i
+        elif player == 'LB' and pitchTeamGuest[1] == None:
+            pitchTeamGuest[1] = i
+        elif player == 'CB' and (pitchTeamGuest[2] == None or pitchTeamGuest[3] == None):
+            if pitchTeamGuest[2] != None:
+                pitchTeamGuest[3] = i
+            else:
+                pitchTeamGuest[2] = i
+        elif player == 'RB' and pitchTeamGuest[4] == None:
+            pitchTeamGuest[4] = i
+        elif player == 'LM' and pitchTeamGuest[5] == None:
+            pitchTeamGuest[5] = i
+        elif player == 'RM' and pitchTeamGuest[6] == None:
+            pitchTeamGuest[6] = i
+        elif player == 'CM' and pitchTeamGuest[7] == None:
+            pitchTeamGuest[7] = i
+        elif player == 'LS' and pitchTeamGuest[8] == None:
+            pitchTeamGuest[8] = i
+        elif player == 'RS' and pitchTeamGuest[9] == None:
+            pitchTeamGuest[9] = i
+        elif player == 'CS' and pitchTeamGuest[10] == None:
+            pitchTeamGuest[10] = i
+    
+    print(pitchTeamHost)
+
     changes = list(Change.objects.all().filter(match=match.id))
 
     changesHost = []
@@ -129,7 +189,7 @@ def match(request, match_id):
                 elif event.event_type == 'FKCK':
                     eventsGuest["freekicks"] += 1
 
-    return render(request, "match.html", {"match": match, "goals": goals, "hostGoals": hostGoals, "guestGoals": guestGoals, "eventsHost": eventsHost, "eventsGuest": eventsGuest, "changesHost": changesHost, "changesGuest": changesGuest})
+    return render(request, "match.html", {"match": match, "goals": goals, "hostGoals": hostGoals, "guestGoals": guestGoals, "eventsHost": eventsHost, "eventsGuest": eventsGuest, "changesHost": changesHost, "changesGuest": changesGuest, "pitchTeamHost": pitchTeamHost, "pitchTeamGuest": pitchTeamGuest})
 
 def table(request):
     players = list(Player.objects.all())

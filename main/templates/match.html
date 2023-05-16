@@ -84,109 +84,183 @@
             <div class="match-body__lineup_team">{{match.host.name}}</div>
             <div class="match-body__lineup_pitch">
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamHost|slice:"0:1" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamHost|slice:"1:2" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamHost|slice:"2:3" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamHost|slice:"3:4" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamHost|slice:"4:5" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamHost|slice:"5:6" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamHost|slice:"6:7" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamHost|slice:"7:8" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamHost|slice:"8:9" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamHost|slice:"9:10" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamHost|slice:"10:11" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="match-body__lineup_pitch_spacer"></div>
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamGuest|slice:"10:11" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamGuest|slice:"9:10" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamGuest|slice:"8:9" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamGuest|slice:"7:8" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamGuest|slice:"6:7" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamGuest|slice:"5:6" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamGuest|slice:"4:5" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamGuest|slice:"3:4" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamGuest|slice:"2:3" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %} {% for player in pitchTeamGuest|slice:"1:2" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="match-body__lineup_pitch_row">
+                    {% for player in pitchTeamGuest|slice:"0:1" %}
                     <div class="match-body__lineup_pitch_player">
-                        <div class="match-body__lineup_pitch_player_number_2">00</div>
-                        <div class="match-body__lineup_pitch_player_name">The Name</div>
+                        <div class="match-body__lineup_pitch_player_number_2">{{player.shirt_number}}</div>
+                        <div class="match-body__lineup_pitch_player_name">
+                            {{player.first_name}} {{player.last_name}}
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="match-body__lineup_team">{{match.guest.name}}</div>
