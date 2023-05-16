@@ -53,53 +53,63 @@
     );
 </script>
 <div class="club">
-  <div class="club-nav">
-    <a class="club-nav__button toggle-matches" href="#matches">Mecze</a>
-    <a class="club-nav__button toggle-info" href="#info">Informacje</a>
-    <a class="club-nav__button toggle-players" href="#players">Zawodnicy</a>
-  </div>
-  <div class="club-matches  toggle-content" id="matches" style="display: none">
-    <div class="outer-matches">
-        {% for row in rows %}<div class="matches">
-          <div class="matches-header">Kolejka {{ row }} z 38</div>
-          <div class="matches-body">
-            {% for match in matches %}
-              <a href="{% url 'main:match' match %}">
-                <div class="matches-content">
-                  <div class="matches-content__teams">
-                  <div class="matches-content__teams_item">Everton <span>1</span></div>
-                  <div class="matches-content__teams_item matches-winner">Arsenal <span>5</span></div>
+    <div class="club-nav">
+        <a class="club-nav__button toggle-matches" href="#matches">Mecze</a>
+        <a class="club-nav__button toggle-info" href="#info">Informacje</a>
+        <a class="club-nav__button toggle-players" href="#players">Zawodnicy</a>
+    </div>
+    <div class="club-matches toggle-content" id="matches" style="display: none">
+        <div class="outer-matches">
+            {% for item in matches %}
+            <div class="matches">
+                {% if item.row %}
+                <div class="matches-header">Kolejka {{ item.round }} z {{rowsMax}}</div>
+                <div class="matches-body">
+                    {% for match in item.row %}
+                    <a href="{% url 'main:match' match.id %}">
+                        <div class="matches-content">
+                            <div class="matches-content__teams">
+                                <div class="matches-content__teams_item">
+                                    {{match.host.name}} <span>{{match.goalsHost}}</span>
+                                </div>
+                                {% if match.outcome == 1 %}
+                                <div class="matches-winner"></div>
+                                {% endif %}
+                                <div class="matches-content__teams_item">
+                                    {{match.guest.name}} <span>{{match.goalsGuest}}</span>
+                                </div>
+                                {% if match.outcome == -1 %}
+                                <div class="matches-winner"></div>
+                                {% endif %}
+                            </div>
+                            <div class="matches-content__date">{{match.date}}</div>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
-                <div class="matches-content__date">
-                  Sob, Maj 13
-                </br>
-                <span>16:00</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="club-info toggle-content" id="info">
+        <div class="club-info__name">{{team.name}}</div>
+        <div class="club-info__item"><span>Manager: </span>{{team.manager}}</div>
+        <div class="club-info__item"><span>Owner: </span>{{team.owner}}</div>
+        <div class="club-info__item"><span>Established: </span>{{team.established}}</div>
+        <div class="club-info__item"><span>Stadium: </span>{{team.stadium.name}} ({{team.stadium.localization}})</div>
+    </div>
+    <div class="club-players-outer toggle-content" id="players" style="display: none">
+        <div class="club-players">
+            {% for player in players %}
+            <a href="{% url 'main:player' player.id %}">
+                <div class="club-players__container">
+                    <div class="club-players__container_name">{{player.first_name}} {{player.last_name}}</div>
+                    <div class="club-players__container_position">{{player.position}}</div>
                 </div>
-              </div>
             </a>
             {% endfor %}
-          </div>
-        </div>{% endfor %}
+        </div>
     </div>
-  </div>
-    <div class="club-info toggle-content"  id="info">
-      <div class="club-info__name">{{team.name}}</div>
-      <div class="club-info__item"><span>Manager: </span>{{team.manager}}</div>
-      <div class="club-info__item"><span>Owner: </span>{{team.owner}}</div>
-      <div class="club-info__item"><span>Established: </span>{{team.established}}</div>
-      <div class="club-info__item"><span>Stadium: </span>{{team.stadium.name}} ({{team.stadium.localization}})</div>
-    </div>
-    <div class="club-players-outer toggle-content"  id="players" style="display: none">
-    <div class="club-players">
-        {% for player in players %}
-        <a href="{% url 'main:player' player.id %}">
-            <div class="club-players__container">
-                <div class="club-players__container_name">{{player.first_name}} {{player.last_name}}</div>
-                <div class="club-players__container_position">{{player.position}}</div>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-  </div>
 </div>
 {% endblock %}

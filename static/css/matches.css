@@ -82,7 +82,7 @@
 }
 
 .matches-winner {
-    width: 100%;
+    width: 90%;
     height: 1px;
     position: absolute;
     background: rgb(47, 255, 61);
