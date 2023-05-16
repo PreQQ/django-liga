@@ -14,23 +14,27 @@
             <div class="table-team-header__content">Pts</div>
             <div class="table-team-header__last">Ostatnie 5</div>
         </div>
-        {% for value in teams %}
+        {% for team in teams %}
         <div class="table-team">
-            <div class="table-team__club"><a href="{% url 'main:club' value %}">{{ value }} Name</a></div>
-            <div class="table-team__content">00</div>
-            <div class="table-team__content">00</div>
-            <div class="table-team__content">00</div>
-            <div class="table-team__content">00</div>
-            <div class="table-team__content">00</div>
-            <div class="table-team__content">00</div>
-            <div class="table-team__content">00</div>
-            <div class="table-team__content">00</div>
+            <div class="table-team__club">
+                <a href="{% url 'main:club' team.id %}">{{ team.index }} {{team.name}}</a>
+            </div>
+            <div class="table-team__content">{{team.mp}}</div>
+            <div class="table-team__content">{{team.w}}</div>
+            <div class="table-team__content">{{team.d}}</div>
+            <div class="table-team__content">{{team.l}}</div>
+            <div class="table-team__content">{{team.gf}}</div>
+            <div class="table-team__content">{{team.ga}}</div>
+            <div class="table-team__content">{{team.gd}}</div>
+            <div class="table-team__content">{{team.pts}}</div>
             <div class="table-team__last">
+                {% for match in team.matches %} {% if match == 3 %}
                 <div class="table-icon table-win-icon"></div>
-                <div class="table-icon table-win-icon"></div>
-                <div class="table-icon table-win-icon"></div>
-                <div class="table-icon table-win-icon"></div>
-                <div class="table-icon table-win-icon"></div>
+                {% elif match == 1 %}
+                <div class="table-icon table-draw-icon"></div>
+                {% elif match == 0 %}
+                <div class="table-icon table-loss-icon"></div>
+                {% endif %} {% endfor %}
             </div>
         </div>
         {% endfor %}

@@ -19,27 +19,142 @@ def match(request, match_id):
     return render(request, "match.html", {"match": match_id})
 
 def table(request):
-    tteams = list(Team.objects.values_list('name', "id"))
-    events = list(Event.objects.values_list("event_type", "player"))
-    print(tteams)
-    print(events)
-    TT = [];
+    players = list(Player.objects.all())
+    TT = []
 
     matches = list(Match.objects.all())
 
-    def calcData(matches, TT):
+    def calculateTable(matches, TT):
         for match in matches:
+            host = 0
+            guest = 0
+            outcome = 0
 
-            eventsTT = list(Event.objects.values_list("event_type", "match").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(pk=match.id))
-            print(eventsTT)
+            eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
 
-    # match for 2 teams, only goals, add to 2 teams calc data (pts, w/d/l)
+            for event in eventsTT:
+                teamId = players[event[2]].team.id
+
+                if teamId == match.host.id:
+                    host += 1
+                elif teamId == match.guest.id:   
+                    guest += 1 
+
+            
+            if host - guest < 0:
+                outcome = -1
+            elif host - guest > 0:
+                outcome = 1 
+
+            foundHost = False
+
+            for x in TT:
+                if x["id"] == match.host.id:
+                    foundHost = True
+                    pts = 0
+                    w = 0
+                    d = 0
+                    l = 0
+                    if outcome == 1:
+                        pts = 3
+                        w = 1
+                    elif outcome == 0:
+                        pts = 1
+                        d = 1
+                    elif outcome == -1:
+                        pts = 0
+                        l = 1
+
+                    x["mp"]+= 1
+                    x["w"]+= w
+                    x["d"]+= d
+                    x["l"]+= l
+                    x["gf"]+= host
+                    x["ga"]+= guest
+                    x["gd"]+= (host - guest)
+                    x["pts"]+= pts
+                    
+                    if len(x["matches"]) > 5:
+                        x["matches"].pop()
+                        x["matches"].insert(0, pts)
+                    else:
+                        x["matches"].insert(0, pts)
+                    break
+
+            if foundHost == False:
+                pts = 0
+                w = 0
+                d = 0
+                l = 0
+                if outcome == 1:
+                    pts = 3
+                    w = 1
+                elif outcome == 0:
+                    pts = 1
+                    d = 1
+                elif outcome == -1:
+                    pts = 0
+                    l = 1
+
+                TT.append(dict(id = match.host.id, name = match.host.name, mp = 1, w = w, d = d, l = l, gf = host, ga = guest, gd = host - guest, pts = pts, matches = [pts], index = len(TT) + 1))
+
+            foundGuest = False
+
+            for x in TT:
+                if x["id"] == match.guest.id:
+                    foundGuest = True
+                    pts = 0
+                    w = 0
+                    d = 0
+                    l = 0
+                    if outcome == -1:
+                        pts = 3
+                        w = 1
+                    elif outcome == 0:
+                        pts = 1
+                        d = 1
+                    elif outcome == 1:
+                        pts = 0
+                        l = 1
+
+                    x["mp"]+= 1
+                    x["w"]+= w
+                    x["d"]+= d
+                    x["l"]+= l
+                    x["gf"]+= guest
+                    x["ga"]+= host
+                    x["gd"]+= (guest - host)
+                    x["pts"]+= pts
+                    
+                    if len(x["matches"]) > 5:
+                        x["matches"].pop()
+                        x["matches"].insert(0, pts)
+                    else:
+                        x["matches"].insert(0, pts)
+                    break
+
+            if foundGuest == False:
+                pts = 0
+                w = 0
+                d = 0
+                l = 0
+                if outcome == -1:
+                    pts = 3
+                    w = 1
+                elif outcome == 0:
+                    pts = 1
+                    d = 1
+                elif outcome == 1:
+                    pts = 0
+                    l = 1
+
+                TT.append(dict(id = match.guest.id, name = match.guest.name, mp = 1, w = w, d = d, l = l, gf = guest, ga = host, gd = guest - host, pts = pts, matches = [pts], index = len(TT) + 1))
 
 
-    calcData(matches, TT)
+    calculateTable(matches, TT)
 
-    teams = [1,2,3]
-    return render(request, "table.html", {"teams": teams})
+    print(TT)
+    return render(request, "table.html", {"teams": TT})
 
 def statistics(request):
     players = list(Player.objects.all())

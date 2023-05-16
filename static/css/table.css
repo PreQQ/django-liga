@@ -73,9 +73,10 @@
 
 .table-team__last {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     column-gap: 4px;
     margin: 0 0 0 12px;
+    width: 96px;
 }
 
 .table-footer {
