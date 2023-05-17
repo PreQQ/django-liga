@@ -399,4 +399,19 @@ def player(request, player_id):
 def players(request):
     playersArray = list(Player.objects.all())
 
+    if request.GET:
+        search = request.GET["search"].split(" ", 1)
+        firstName = ''
+        lastName = ''
+        i= 0
+
+        for item in search:
+            if i == 0:
+                firstName = item
+            elif i == 1:
+                lastName = item
+            i += 1
+
+        playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName))
+
     return render(request, "players.html", {"players": playersArray})

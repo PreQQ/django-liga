@@ -1,7 +1,8 @@
 .players {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .players-container {
@@ -16,6 +17,7 @@
 }
 
 .players-container__item {
+    position: relative;
     width: 100%;
     height: max-content;
     background: rgb(52, 52, 52);
@@ -42,4 +44,56 @@
     font-size: 16px;
     font-weight: 700;
     color: lightgrey;
+}
+
+.players-search {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.players-search__form_input {
+    width: 250px;
+    height: 40px;
+    border: 1px solid grey;
+    background: transparent;
+    padding: 0 12px;
+    color: white;
+    font-size: 12px;
+}
+
+.players-search__form_button {
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    background: rgb(98, 0, 128);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 11px;
+    margin-left: 12px;
+}
+
+.players-container__item_form {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+}
+
+.players-container__item_form_fav {
+    font-size: 14px;
+    font-weight: 500;
+    color: grey;
+}
+
+.players-container__item_form_button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }

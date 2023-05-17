@@ -41,6 +41,7 @@ class Player(models.Model):
     weight = models.IntegerField()
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
     position = models.CharField(max_length=3, choices=PositionChoices.choices, default="SUB")
+    favourite = models.IntegerField(default=0)
 
     def __str__(self):
         return self.first_name + " " + self.last_name
