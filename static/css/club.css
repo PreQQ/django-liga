@@ -90,3 +90,23 @@
     font-weight: 700;
     color: lightgrey;
 }
+
+.club-container__item_form {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    right: 8px;
+    bottom: 8px;
+}
+
+.club-container__item_form_fav {
+    font-size: 14px;
+    font-weight: 500;
+    color: grey;
+}
+
+.club-container__item_form_button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}

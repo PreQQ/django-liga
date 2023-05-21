@@ -12,4 +12,5 @@ urlpatterns = [
     path("statistics/", views.statistics, name="statistics"),
     path("player/<int:player_id>", views.player, name="player"),
     path("club/<int:club_id>", views.club, name="club"),
+    path('increment_favourite/<int:player_id>/', views.increment_favourite, name='increment_favourite'),
 ]

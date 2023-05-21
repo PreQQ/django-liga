@@ -1,9 +1,10 @@
 import genericpath
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import Match, Team, Player, Event, Change
 from django.db.models import Count, Q
-    
+
+
 def matches(request):
     teamsLength = Team.objects.count()
     rowsMax = (teamsLength - 1) * 2
@@ -396,6 +397,7 @@ def player(request, player_id):
     player = get_object_or_404(Player, pk=player_id)
     return render(request, "player.html", {"player": player})
 
+
 def players(request):
     playersArray = list(Player.objects.all())
 
@@ -415,3 +417,10 @@ def players(request):
         playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName))
 
     return render(request, "players.html", {"players": playersArray})
+
+
+def increment_favourite(request, player_id):
+        player = Player.objects.get(pk=player_id)
+        player.favourite += 1
+        player.save()
+        return redirect(request.META['HTTP_REFERER'])

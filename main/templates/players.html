@@ -19,7 +19,9 @@
                 <div class="players-container__item_name">{{player.first_name}} {{player.last_name}}</div>
                 <div class="players-container__item_team">{{player.team.name}}</div>
                 <div class="players-container__item_position">{{player.position}}</div>
-                <form class="players-container__item_form">
+                
+                <form class="players-container__item_form" action="{% url 'main:increment_favourite' player.id %}" method="post">
+                    {% csrf_token %}
                     <div class="players-container__item_form_fav">{{player.favourite}}</div>
                     <button class="players-container__item_form_button">
                         <svg
