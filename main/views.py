@@ -2,7 +2,7 @@ import genericpath
 from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import Match, Team, Player, Event, Change
-from django.db.models import Count, Q
+from django.db.models import Count, Q, F
 
 
 def matches(request):
@@ -364,7 +364,7 @@ def club(request, club_id):
 
     matchesTT = Match.objects.all().filter(Q(host=club_id) | Q(guest=club_id))
     matches = [dict(round = i + 1, row = []) for i in range(rowsMax)]
-    players = list(Player.objects.all())
+    players = list(Player.objects.all().filter(team=club_id))
 
     for match in matchesTT:
         host = 0
@@ -401,6 +401,11 @@ def player(request, player_id):
 def players(request):
     playersArray = list(Player.objects.all())
 
+    if request.method == "POST":
+        searched = request.POST['searched']
+        players = Player.objects.filter(Q(first_name__contains=searched) | Q(last_name__contains=searched) | Q(first_name__icontains=searched, last_name__icontains=searched))
+        return render(request, 'players.html', {'searched':searched,'players':players})
+    
     if request.GET:
         search = request.GET["search"].split(" ", 1)
         firstName = ''
