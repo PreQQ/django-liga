@@ -17,7 +17,9 @@
         {% for team in teams %}
         <div class="table-team">
             <div class="table-team__club">
-                <a href="{% url 'main:club' team.id %}">{{ team.index }} {{team.name}}</a>
+                <a href="{% url 'main:club' team.id %}"
+                    >{% cycle '1' '2' '3' '4' '5' '6' '7' '8' '9' '10' '11' '12' '13' '14' '15' '16' '17' '18' '19' '20' '21' '22' '23' '24' '25' '26' '27' '28' '29' '30' %} {{team.name}}</a
+                >
             </div>
             <div class="table-team__content">{{team.mp}}</div>
             <div class="table-team__content">{{team.w}}</div>

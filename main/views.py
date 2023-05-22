@@ -270,7 +270,7 @@ def table(request):
                     pts = 0
                     l = 1
 
-                TT.append(dict(id = match.host.id, name = match.host.name, mp = 1, w = w, d = d, l = l, gf = host, ga = guest, gd = host - guest, pts = pts, matches = [pts], index = len(TT) + 1))
+                TT.append(dict(id = match.host.id, name = match.host.name, mp = 1, w = w, d = d, l = l, gf = host, ga = guest, gd = host - guest, pts = pts, matches = [pts]))
 
             foundGuest = False
 
@@ -322,11 +322,18 @@ def table(request):
                     pts = 0
                     l = 1
 
-                TT.append(dict(id = match.guest.id, name = match.guest.name, mp = 1, w = w, d = d, l = l, gf = guest, ga = host, gd = guest - host, pts = pts, matches = [pts], index = len(TT) + 1))
+                TT.append(dict(id = match.guest.id, name = match.guest.name, mp = 1, w = w, d = d, l = l, gf = guest, ga = host, gd = guest - host, pts = pts, matches = [pts]))
 
 
     calculateTable(matches, TT)
-    return render(request, "table.html", {"teams": TT})
+    newlist = sorted(TT, key=lambda d: d['pts'], reverse=True)
+
+    indexList = []
+
+    for i in range(len(newlist)):
+        indexList.append(i + 1)
+    
+    return render(request, "table.html", {"teams": newlist, "indexes": indexList})
 
 def statistics(request):
     players = list(Player.objects.all())
@@ -364,7 +371,8 @@ def club(request, club_id):
 
     matchesTT = Match.objects.all().filter(Q(host=club_id) | Q(guest=club_id))
     matches = [dict(round = i + 1, row = []) for i in range(rowsMax)]
-    players = list(Player.objects.all().filter(team=club_id))
+    players = list(Player.objects.all())
+    playersToDisplay = list(Player.objects.all().filter(team=club_id))
 
     for match in matchesTT:
         host = 0
@@ -391,7 +399,7 @@ def club(request, club_id):
             if int(x["round"]) == int(match.match_round):
                 x["row"].append(dict(id = match.id, date = match.date, match_round = match.match_round, goalsHost = host, goalsGuest = guest, outcome = outcome, host = match.host, guest = match.guest))
 
-    return render(request, "club.html", {"team": team, "players": players, "matches": matches, "rowsMax": rowsMax})
+    return render(request, "club.html", {"team": team, "players": playersToDisplay, "matches": matches, "rowsMax": rowsMax})
 
 def player(request, player_id):
     player = get_object_or_404(Player, pk=player_id)
