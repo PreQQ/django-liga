@@ -53,6 +53,9 @@ class Match(models.Model):
     date = models.DateField()
     match_round = models.IntegerField()
 
+    class Meta:
+        verbose_name_plural = "Matches"
+
     def __str__(self):
         return self.host.name + " - " + self.guest.name + " (kolejka: " + str(self.match_round) + ")" 
 
