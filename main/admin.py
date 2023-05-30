@@ -6,7 +6,7 @@ from .models import Stadium, Team, Player, Match, Event, Change
 
 
 class MatchAdmin(admin.ModelAdmin):
-    list_display = ('host', 'guest', 'date')
+    list_display = ('host', 'guest', 'match_round', 'date')
     list_display_links = ('host', 'guest')
 
 class EventAdmin(admin.ModelAdmin):
