@@ -5,6 +5,19 @@
     align-items: center;
 }
 
+.players-download {
+    width: 370px;
+    height: 40px;
+    cursor: pointer;
+    background: rgb(98, 0, 128);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 0 20px;
+}
+
 .players-container {
     width: 100%;
     max-width: 600px;

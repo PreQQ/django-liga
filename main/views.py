@@ -2,8 +2,14 @@ import genericpath
 from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import Match, Team, Player, Event, Change
-from django.db.models import Count, Q, F
+from django.db.models import Count, Q
+from .my_captcha import FormWithCaptcha
 
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
 
 def matches(request):
     teamsLength = Team.objects.count()
@@ -429,7 +435,7 @@ def players(request):
 
         playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName))
 
-    return render(request, "players.html", {"players": playersArray})
+    return render(request, "players.html", {"players": playersArray, "captcha": FormWithCaptcha})
 
 
 def increment_favourite(request, player_id):
@@ -437,3 +443,49 @@ def increment_favourite(request, player_id):
         player.favourite += 1
         player.save()
         return redirect(request.META['HTTP_REFERER'])
+        
+def pdf(request, pdf_id): 
+    buf = io.BytesIO()
+    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+
+    textobj = c.beginText()
+    textobj.setTextOrigin(inch,inch)
+    textobj.setFont('Helvetica', 14)
+
+    lines = []
+
+    if pdf_id == 1:
+        players = Player.objects.all()
+
+        for player in players:
+            lines.append("Imie i nazwisko: " + player.first_name + " " + player.last_name)
+            lines.append("Klub: " + player.team.name)
+            lines.append("Pozycja: " + player.position)
+            lines.append("Numer koszulki: " + str(player.shirt_number))
+            lines.append("Wysokosc: " + str(player.height) + " cm")
+            lines.append("Waga: " + str(player.weight) + " kg")
+            lines.append("Polubienia: " + str(player.favourite))
+            lines.append(" ")
+
+    counter = 0
+    cc = 0
+
+    for line in lines:
+        cc = cc + 1
+        counter = counter + 1
+        textobj.textLine(line)
+
+        if counter > (5 * 8 - 1) and len(lines) != cc:
+            c.drawText(textobj)
+            c.showPage()
+            counter = 0
+            textobj = c.beginText()
+            textobj.setTextOrigin(inch,inch)
+            textobj.setFont('Helvetica', 14)
+
+    c.drawText(textobj)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+
+    return FileResponse(buf, as_attachment=True, filename="Zawodnicy.pdf")

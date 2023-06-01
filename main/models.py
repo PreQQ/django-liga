@@ -21,17 +21,17 @@ class Team(models.Model):
 
 class Player(models.Model):
     class PositionChoices(models.TextChoices):
-        GK = 'GK'
-        LB = 'LB'
-        CB = 'CB'
-        RB = 'RB'
-        LM = 'LM'
-        RM = 'RM'
-        CM = 'CM'
-        LS = 'LS'
-        RS = 'RS'
-        CS = 'CS'
-        SUB = 'SUB'
+        GK = 'GK', _('Bramkarz')
+        LB = 'LB', _('Lewy obrońca')
+        CB = 'CB', _('Środkowy obrońca')
+        RB = 'RB', _('Prawy obrońca')
+        LM = 'LM', _('Lewy pomocnik')
+        RM = 'RM', _('Prawy pomocnik')
+        CM = 'CM', _('Środkowy pomocnik')
+        LS = 'LS', _('Lewy napastnik')
+        RS = 'RS', _('Prawy napastnik')
+        CS = 'CS', _('Środkowy napastnik')
+        SUB = 'SUB', _('Rezerwowy')
 
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=50)
