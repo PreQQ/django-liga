@@ -3,20 +3,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 24px 0;
 }
 
 .match-header {
     width: 100%;
     height: max-content;
     max-width: 600px;
-    background: rgb(44, 44, 44);
+    background: #f2f3f6;
     padding: 16px;
+    border-radius: 4px;
 }
 
 .match-header__date {
     font-size: 16px;
     font-weight: 500;
-    color: lightgrey;
+    color: #505969;
 }
 
 .match-header__teams {
@@ -29,20 +31,20 @@
 .match-header__teams_name {
     font-size: 14px;
     font-weight: 400;
-    color: lightgrey;
+    color: #13131c;
 }
 
 .match-header__teams_name2 {
     font-size: 14px;
     font-weight: 400;
-    color: lightgrey;
+    color: #13131c;
     text-align: right;
 }
 
 .match-header__teams_outcome {
     font-size: 18px;
     font-weight: 700;
-    color: lightgrey;
+    color: #13131c;
     text-align: center;
 }
 
@@ -50,7 +52,7 @@
     width: 100%;
     font-size: 14px;
     font-weight: 400;
-    color: lightgrey;
+    color: #505969;
     text-align: center;
     margin: 0 0 12px 0;
 }
@@ -72,14 +74,14 @@
 .match-header__goals_left_item {
     font-size: 14px;
     font-weight: 400;
-    color: lightgrey;
+    color: #13131c;
 }
 
 .match-switches {
     width: 100%;
     height: max-content;
     max-width: 600px;
-    background: rgb(118, 118, 118);
+    background: #1a5af3;
     display: flex;
 }
 
@@ -88,7 +90,7 @@
     height: 40px;
     font-size: 16px;
     font-weight: 700;
-    color: lightgrey;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,7 +105,8 @@
     width: 100%;
     height: max-content;
     max-width: 600px;
-    background: rgb(44, 44, 44);
+    background: #f2f3f6;
+    border-radius: 4px;
 }
 
 .match-body__lineup_team {
@@ -111,15 +114,15 @@
     height: 40px;
     font-size: 16px;
     font-weight: 700;
-    color: lightgrey;
+    color: white;
     padding: 0 0 0 16px;
-    background: rgba(0, 0, 0, 0.5);
+    background: #13131c;
     display: flex;
     align-items: center;
 }
 
 .match-body__lineup_pitch {
-    background: green;
+    background: #13d4ae;
     display: flex;
     flex-direction: column;
 }
@@ -136,7 +139,7 @@
     height: 32px;
     border-radius: 50%;
     border: 1px solid #fff;
-    background: red;
+    background: #b82c3f;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +152,7 @@
     height: 32px;
     border-radius: 50%;
     border: 1px solid #fff;
-    background: blue;
+    background: #1a5af3;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,6 +164,7 @@
     font-size: 12px;
     color: white;
     margin: 4px 0 0 0;
+    text-align: center;
 }
 
 .match-body__lineup_pitch_row {
@@ -184,13 +188,13 @@
 .match-body__lineup_sub_side {
     font-size: 14px;
     font-weight: 500;
-    color: lightgrey;
+    color: #13131c;
 }
 
 .match-body__lineup_name {
     font-size: 16px;
     font-weight: 700;
-    color: lightgrey;
+    color: #505969;
     text-align: center;
     margin-top: 12px;
 }
@@ -214,7 +218,7 @@
     text-align: center;
     font-size: 16px;
     font-weight: 700;
-    color: lightgrey;
+    color: #505969;
     margin: 16px 0 8px 0;
 }
 
@@ -223,19 +227,19 @@
     justify-content: space-between;
     font-size: 14px;
     font-weight: 400;
-    color: lightgrey;
+    color: #13131c;
     padding: 0 16px 16px 16px;
 }
 
 .match-body__lineup_sub_container_player_name {
     font-size: 14px;
     font-weight: 500;
-    color: lightgrey;
+    color: #13131c;
 }
 
 .match-body__lineup_sub_container_player_name span {
     font-weight: 700;
-    color: grey;
+    color: #505969;
     margin: 0 4px;
 }
 
@@ -251,7 +255,7 @@
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid green;
+    border-top: 6px solid #13d4ae;
     clear: both;
     transform: rotate(180deg);
 }
@@ -268,7 +272,7 @@
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid green;
+    border-top: 6px solid #13d4ae;
     clear: both;
     transform: rotate(180deg);
 }
@@ -284,19 +288,19 @@
     text-align: left;
     font-size: 14px;
     font-weight: 500;
-    color: lightgrey;
+    color: #13131c;
 }
 
 .match-body__stats_item_2 {
     text-align: right;
     font-size: 14px;
     font-weight: 500;
-    color: lightgrey;
+    color: #13131c;
 }
 
 .match-body__stats_middle {
     text-align: center;
     font-size: 16px;
     font-weight: 700;
-    color: lightgrey;
+    color: #505969;
 }

@@ -1,14 +1,16 @@
 .outer-matches {
     width: 100%;
-    height: 100%;
+    height: max-content;
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding: 24px 0 0 0;
 }
 
 .matches {
     position: relative;
     width: 80%;
+    margin-bottom: 24px;
 }
 
 .matches-header {
@@ -17,7 +19,7 @@
     height: 30px;
     display: flex;
     align-items: center;
-    color: lightgrey;
+    color: #505969;
     text-transform: uppercase;
     padding-left: 16px;
 }
@@ -33,8 +35,8 @@
     width: 100%;
     height: 140px;
     max-width: 360px;
-    background: rgb(56, 56, 56);
-    border: 1px solid rgb(115, 115, 115);
+    background: #f2f3f6;
+    border-radius: 4px;
     display: flex;
 }
 
@@ -52,7 +54,7 @@
     position: absolute;
     width: 1px;
     height: 100px;
-    background: rgb(115, 115, 115);
+    background: #d8dbe7;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -60,7 +62,7 @@
 
 .matches-content__teams_item {
     position: relative;
-    color: lightgrey;
+    color: #13131c;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,7 +72,7 @@
 
 .matches-content__date {
     width: 30%;
-    color: lightgrey;
+    color: #505969;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,7 +85,7 @@
 
 .matches-winner {
     width: 90%;
-    height: 1px;
+    height: 2px;
     position: absolute;
-    background: rgb(47, 255, 61);
+    background: #13d4ae;
 }

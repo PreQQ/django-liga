@@ -3,13 +3,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 24px 0;
 }
 
 .players-download {
     width: 370px;
     height: 40px;
     cursor: pointer;
-    background: rgb(98, 0, 128);
+    background: #1a5af3;
     color: white;
     border: none;
     text-transform: uppercase;
@@ -17,24 +18,26 @@
     font-size: 11px;
     padding: 0 20px;
     margin-bottom: 20px;
+    border-radius: 4px;
 }
 
 .players-container {
     width: 100%;
     max-width: 600px;
     height: max-content;
-    background: rgb(44, 44, 44);
-    padding: 16px;
+    background: #d8dbe7;
+    padding: 8px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2px;
+    grid-gap: 4px;
+    border-radius: 4px;
 }
 
 .players-container__item {
     position: relative;
     width: 100%;
     height: max-content;
-    background: rgb(52, 52, 52);
+    background: #f2f3f6;
     display: flex;
     flex-direction: column;
     row-gap: 24px;
@@ -45,19 +48,19 @@
 .players-container__item_name {
     font-size: 14px;
     font-weight: 500;
-    color: lightgrey;
+    color: #13131c;
 }
 
 .players-container__item_team {
     font-size: 14px;
     font-weight: 500;
-    color: grey;
+    color: #505969;
 }
 
 .players-container__item_position {
     font-size: 16px;
     font-weight: 700;
-    color: lightgrey;
+    color: #687286;
 }
 
 .players-search {
@@ -71,24 +74,26 @@
 .players-search__form_input {
     width: 250px;
     height: 40px;
-    border: 1px solid grey;
+    border: 1px solid #d8dbe7;
     background: transparent;
     padding: 0 12px;
-    color: white;
+    color: #13131c;
     font-size: 12px;
+    border-radius: 4px;
 }
 
 .players-search__form_button {
     width: 100px;
     height: 40px;
     cursor: pointer;
-    background: rgb(98, 0, 128);
+    background: #1a5af3;
     color: white;
     border: none;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 11px;
     margin-left: 12px;
+    border-radius: 4px;
 }
 
 .players-container__item_form {
@@ -97,13 +102,13 @@
     align-items: center;
     position: absolute;
     right: 8px;
-    bottom: 8px;
+    bottom: 16px;
 }
 
 .players-container__item_form_fav {
     font-size: 14px;
     font-weight: 500;
-    color: grey;
+    color: #13131c;
 }
 
 .players-container__item_form_button {

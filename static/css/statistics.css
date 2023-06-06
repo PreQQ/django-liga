@@ -3,20 +3,22 @@
     position: relative;
     display: flex;
     justify-content: center;
+    padding: 24px 0;
 }
 
 .stats {
     width: 100%;
     max-width: 600px;
     position: relative;
-    background: rgb(44, 44, 44);
+    background: #f2f3f6;
     padding: 16px;
+    border-radius: 4px;
 }
 
 .stats-header {
     font-size: 20px;
     font-weight: 500;
-    color: lightgrey;
+    color: #13131c;
     text-align: center;
     margin-bottom: 16px;
 }
@@ -28,7 +30,7 @@
 .stats-container__title {
     font-size: 20px;
     font-weight: 700;
-    color: white;
+    color: #13131c;
     margin-bottom: 16px;
 }
 
@@ -42,14 +44,14 @@
 .stats-container__table_names_item {
     font-size: 14px;
     font-weight: 500;
-    color: lightgrey;
+    color: #505969;
 }
 
 .stats-container__table_item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid grey;
+    border-top: 1px solid #d8dbe7;
     height: 50px;
 }
 
@@ -61,13 +63,13 @@
 
 .stats-container__table_item_info_position {
     font-size: 14px;
-    color: grey;
+    color: #13131c;
 }
 
 .stats-container__table_item_info_content {
     font-size: 12px;
     font-weight: 400;
-    color: lightgrey;
+    color: #34353e;
 }
 
 .stats-container__table_item_info_content span {
@@ -78,7 +80,7 @@
 .stats-container__table_item_outcome {
     font-size: 18px;
     font-weight: 700;
-    color: lightgrey;
+    color: #34353e;
 }
 
 .stats-container__table_extra {
@@ -86,17 +88,18 @@
     flex-direction: column;
     row-gap: 8px;
     margin-bottom: 24px;
-    border-bottom: 1px solid grey;
-    border-top: 1px solid grey;
+    border-bottom: 1px solid #d8dbe7;
+    border-top: 1px solid #d8dbe7;
     padding: 12px 0;
 }
 
 .stats-container__table_extra_item {
     font-size: 16px;
     font-weight: 400;
-    color: rgb(255, 255, 255);
+    color: #34353e;
 }
 
 .stats-container__table_extra_item span {
     font-weight: 700;
+    color: #13131c;
 }
