@@ -1,14 +1,14 @@
 {
     "builds": [
         {
-            "src": "django-liga/wsgi.py",
+            "src": "mainapp/wsgi.py",
             "use": "@vercel/python"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "django-liga/wsgi.py"
+            "dest": "mainapp/wsgi.py"
         }
     ]
 }
