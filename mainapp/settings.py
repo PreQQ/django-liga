@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-7g-yk%*)wmitykuyi+5niian6auhq&4ghpyv-6_6e&=&4my^e%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -75,7 +76,16 @@ WSGI_APPLICATION = 'mainapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'verceldb',
+        'USER': 'default',
+        'PASSWORD': '1gx7LSfPMzlT',
+        'HOST': 'ep-lively-field-110942-pooler.us-east-1.postgres.vercel-storage.com',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
