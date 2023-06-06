@@ -89,3 +89,11 @@
     position: absolute;
     background: #13d4ae;
 }
+
+.matches-winner-2 {
+    width: 90%;
+    height: 2px;
+    position: absolute;
+    background: #13d4ae;
+    margin-top: 80px;
+}

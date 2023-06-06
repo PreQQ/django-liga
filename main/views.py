@@ -26,7 +26,7 @@ def matches(request):
         eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
 
         for event in eventsTT:
-            teamId = players[event[2]].team.id
+            teamId = [player for player in players if player.id == event[2]][0].team.id
 
             if teamId == match.host.id:
                 host += 1
@@ -56,7 +56,7 @@ def match(request, match_id):
     eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
 
     for event in eventsTT:
-        teamId = players[event[2]].team.id
+        teamId = [player for player in players if player.id == event[2]][0].team.id
 
         if teamId == match.host.id:
             hostGoals += 1
@@ -210,7 +210,7 @@ def table(request):
             eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
 
             for event in eventsTT:
-                teamId = players[event[2]].team.id
+                teamId = [player for player in players if player.id == event[2]][0].team.id
 
                 if teamId == match.host.id:
                     host += 1
@@ -438,7 +438,7 @@ def club(request, club_id):
         eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
 
         for event in eventsTT:
-            teamId = players[event[2]].team.id
+            teamId = [player for player in players if player.id == event[2]][0].team.id
 
             if teamId == match.host.id:
                 host += 1
