@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7g-yk%*)wmitykuyi+5niian6auhq&4ghpyv-6_6e&=&4my^e%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -79,11 +78,11 @@ WSGI_APPLICATION = 'mainapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'verceldb',
-        'USER': 'default',
-        'PASSWORD': '1gx7LSfPMzlT',
-        'HOST': 'ep-lively-field-110942-pooler.us-east-1.postgres.vercel-storage.com',
-        'PORT': '5432',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'x38IdUUK09IkJofXLgt2',
+        'HOST': 'containers-us-west-53.railway.app',
+        'PORT': '6594',
     }
 }
 
