@@ -1,0 +1,306 @@
+.match-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+}
+
+.match-header {
+    width: 100%;
+    height: max-content;
+    max-width: 600px;
+    background: #f2f3f6;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.match-header__date {
+    font-size: 16px;
+    font-weight: 500;
+    color: #505969;
+}
+
+.match-header__teams {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 24px 0;
+}
+
+.match-header__teams_name {
+    font-size: 14px;
+    font-weight: 400;
+    color: #13131c;
+}
+
+.match-header__teams_name2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #13131c;
+    text-align: right;
+}
+
+.match-header__teams_outcome {
+    font-size: 18px;
+    font-weight: 700;
+    color: #13131c;
+    text-align: center;
+}
+
+.match-header_goals_icon {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    color: #505969;
+    text-align: center;
+    margin: 0 0 12px 0;
+}
+
+.match-header__goals_container {
+    display: flex;
+}
+
+.match-header__goals_left {
+    width: 50%;
+    text-align: left;
+}
+
+.match-header__goals_right {
+    width: 50%;
+    text-align: right;
+}
+
+.match-header__goals_left_item {
+    font-size: 14px;
+    font-weight: 400;
+    color: #13131c;
+}
+
+.match-switches {
+    width: 100%;
+    height: max-content;
+    max-width: 600px;
+    background: #1a5af3;
+    display: flex;
+}
+
+.match-switches__button {
+    width: 50%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.match-switches__button:hover {
+    border-bottom: 1px solid #fff;
+}
+
+.match-body {
+    width: 100%;
+    height: max-content;
+    max-width: 600px;
+    background: #f2f3f6;
+    border-radius: 4px;
+}
+
+.match-body__lineup_team {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    padding: 0 0 0 16px;
+    background: #13131c;
+    display: flex;
+    align-items: center;
+}
+
+.match-body__lineup_pitch {
+    background: #13d4ae;
+    display: flex;
+    flex-direction: column;
+}
+
+.match-body__lineup_pitch_player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 130px;
+}
+
+.match-body__lineup_pitch_player_number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: #b82c3f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+}
+
+.match-body__lineup_pitch_player_number_2 {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: #1a5af3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+}
+
+.match-body__lineup_pitch_player_name {
+    font-size: 12px;
+    color: white;
+    margin: 4px 0 0 0;
+    text-align: center;
+}
+
+.match-body__lineup_pitch_row {
+    display: flex;
+    justify-content: space-around;
+    margin: 16px 0;
+}
+
+.match-body__lineup_pitch_spacer {
+    width: 100%;
+    height: 3px;
+    background: #fff;
+}
+
+.match-body__lineup_sub_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.match-body__lineup_sub_side {
+    font-size: 14px;
+    font-weight: 500;
+    color: #13131c;
+}
+
+.match-body__lineup_name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #505969;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.match-body__lineup_sub_container {
+    display: flex;
+    padding: 16px;
+}
+
+.match-body__lineup_sub_container_left {
+    width: 50%;
+    text-align: left;
+}
+
+.match-body__lineup_sub_container_right {
+    width: 50%;
+    text-align: right;
+}
+
+.match-body__lineup_manager_name {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #505969;
+    margin: 16px 0 8px 0;
+}
+
+.match-body__lineup_manager {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+    color: #13131c;
+    padding: 0 16px 16px 16px;
+}
+
+.match-body__lineup_sub_container_player_name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #13131c;
+}
+
+.match-body__lineup_sub_container_player_name span {
+    font-weight: 700;
+    color: #505969;
+    margin: 0 4px;
+}
+
+.change_icon {
+    position: relative;
+}
+
+.change_icon::after {
+    content: "";
+    position: absolute;
+    left: 80%;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #13d4ae;
+    clear: both;
+    transform: rotate(180deg);
+}
+
+.change_icon_2 {
+    position: relative;
+}
+
+.change_icon_2::after {
+    content: "";
+    position: absolute;
+    right: 80%;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #13d4ae;
+    clear: both;
+    transform: rotate(180deg);
+}
+
+.match-body__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 32px 16px;
+    row-gap: 12px;
+}
+
+.match-body__stats_item {
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #13131c;
+}
+
+.match-body__stats_item_2 {
+    text-align: right;
+    font-size: 14px;
+    font-weight: 500;
+    color: #13131c;
+}
+
+.match-body__stats_middle {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #505969;
+}
