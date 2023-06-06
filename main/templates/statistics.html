@@ -23,6 +23,49 @@
                 </div>
                 {% endfor %}
             </div>
+            <canvas id="myChartGoals" width="400" height="200"></canvas>
+            <script type="text/javascript">
+                var ctx = document.getElementById('myChartGoals').getContext('2d');
+                var myChart1 = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [{% for item in goals %} '{{ item.player.first_name }} {{ item.player.last_name }}', {% endfor %}],
+                        datasets: [{
+                            label:'Gender',
+                            data: [{% for item in goals  %} '{{ item.total }}', {% endfor %}],
+                            backgroundColor:[
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(151, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(25, 206, 86, 1)',
+                            'rgba(211, 192, 192, 1)',
+                            'rgba(234, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'gree',
+                            'yellow',
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                })
+            </script>
         </div>
         <div class="stats-container">
             <div class="stats-container__title">Asysty</div>
@@ -45,6 +88,49 @@
                 </div>
                 {% endfor %}
             </div>
+            <canvas id="myChartAssists" width="400" height="200"></canvas>
+            <script type="text/javascript">
+                var ctx = document.getElementById('myChartAssists').getContext('2d');
+                var myChart1 = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [{% for item in assists %} '{{ item.player.first_name }} {{ item.player.last_name }}', {% endfor %}],
+                        datasets: [{
+                            label:'Gender',
+                            data: [{% for item in assists  %} '{{ item.total }}', {% endfor %}],
+                            backgroundColor:[
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(151, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(25, 206, 86, 1)',
+                            'rgba(211, 192, 192, 1)',
+                            'rgba(234, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'gree',
+                            'yellow',
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                })
+            </script>
         </div>
         <div class="stats-container">
             <div class="stats-container__title">Zółte kartki</div>
@@ -67,6 +153,49 @@
                 </div>
                 {% endfor %}
             </div>
+            <canvas id="myChartYellows" width="400" height="200"></canvas>
+            <script type="text/javascript">
+                var ctx = document.getElementById('myChartYellows').getContext('2d');
+                var myChart1 = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [{% for item in yellows %} '{{ item.player.first_name }} {{ item.player.last_name }}', {% endfor %}],
+                        datasets: [{
+                            label:'Gender',
+                            data: [{% for item in yellows  %} '{{ item.total }}', {% endfor %}],
+                            backgroundColor:[
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(151, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(25, 206, 86, 1)',
+                            'rgba(211, 192, 192, 1)',
+                            'rgba(234, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'gree',
+                            'yellow',
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                })
+            </script>
         </div>
         <div class="stats-container">
             <div class="stats-container__title">Czerwone kartki</div>
@@ -88,6 +217,78 @@
                     <div class="stats-container__table_item_outcome">{{item.total}}</div>
                 </div>
                 {% endfor %}
+            </div>
+            <canvas id="myChartReds" width="400" height="200"></canvas>
+            <script type="text/javascript">
+                var ctx = document.getElementById('myChartReds').getContext('2d');
+                var myChart1 = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [{% for item in reds %} '{{ item.player.first_name }} {{ item.player.last_name }}', {% endfor %}],
+                        datasets: [{
+                            label:'Gender',
+                            data: [{% for item in reds  %} '{{ item.total }}', {% endfor %}],
+                            backgroundColor:[
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(151, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 135, 1)',
+                            'rgba(25, 206, 86, 1)',
+                            'rgba(211, 192, 192, 1)',
+                            'rgba(234, 102, 132, 1)',
+                            'rgba(153, 99, 132, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'gree',
+                            'yellow',
+                            ],
+                            borderWidth: 0
+                        }]
+                    },
+
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                })
+            </script>
+        </div>
+        <div class="stats-container">
+            <div class="stats-container__title">Dodatkowe statystyki</div>
+            <div class="stats-container__table">
+                <div class="stats-container__table_extra">
+                    <div class="stats-container__table_names_item">Gole w meczu</div>
+                    <div class="stats-container__table_extra_item">Nawięcej: <span>{{goalsExtra.max}}</span></div>
+                    <div class="stats-container__table_extra_item">Średnio: <span>{{goalsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">Najmniej: <span>{{goalsExtra.min}}</span></div>
+                </div>
+                <div class="stats-container__table_extra">
+                    <div class="stats-container__table_names_item">Asysty w meczu</div>
+                    <div class="stats-container__table_extra_item">Nawięcej: <span>{{assistsExtra.max}}</span></div>
+                    <div class="stats-container__table_extra_item">Średnio: <span>{{assistsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">Najmniej: <span>{{assistsExtra.min}}</span></div>
+                </div>
+                <div class="stats-container__table_extra">
+                    <div class="stats-container__table_names_item">Żółte kartki w meczu</div>
+                    <div class="stats-container__table_extra_item">Nawięcej: <span>{{yellowsExtra.max}}</span></div>
+                    <div class="stats-container__table_extra_item">Średnio: <span>{{yellowsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">Najmniej: <span>{{yellowsExtra.min}}</span></div>
+                </div>
+                <div class="stats-container__table_extra">
+                    <div class="stats-container__table_names_item">Czerwone kartki w meczu</div>
+                    <div class="stats-container__table_extra_item">Nawięcej: <span>{{redsExtra.max}}</span></div>
+                    <div class="stats-container__table_extra_item">Średnio: <span>{{redsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">Najmniej: <span>{{redsExtra.min}}</span></div>
+                </div>
             </div>
         </div>
     </div>

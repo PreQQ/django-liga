@@ -80,3 +80,23 @@
     font-weight: 700;
     color: lightgrey;
 }
+
+.stats-container__table_extra {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    padding: 12px 0;
+}
+
+.stats-container__table_extra_item {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+}
+
+.stats-container__table_extra_item span {
+    font-weight: 700;
+}

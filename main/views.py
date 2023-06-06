@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import Match, Team, Player, Event, Change
 from django.db.models import Count, Q
-from .my_captcha import FormWithCaptcha
 
 from django.http import FileResponse
 import io
@@ -121,8 +120,6 @@ def match(request, match_id):
             pitchTeamGuest[9] = i
         elif player == 'CS' and pitchTeamGuest[10] == None:
             pitchTeamGuest[10] = i
-    
-    print(pitchTeamHost)
 
     changes = list(Change.objects.all().filter(match=match.id))
 
@@ -367,8 +364,61 @@ def statistics(request):
 
     for x in redsEvents:
         reds.append(dict(total = x["total"], player = players[x["player"] - 1], index = redsEvents.index(x) + 1))
+
+
+    #max/min/srednia goli w meczu w sezonie
+    goalsData = list(Event.objects.values_list("event_type", "match").filter(event_type = 'GOAL').values('match').annotate(total=Count('match')).order_by('-total'))
+
+    goalsMax = max(goalsData, key=lambda x:x['total'])
+    goalsMin = min(goalsData, key=lambda x:x['total'])
+    goalsAvg = 0 if len(goalsData) == 0 else sum(item['total'] for item in goalsData)/len(goalsData)
+
+    goalsExtra = {
+        "max": goalsMax["total"],
+        "min": goalsMin["total"],
+        "avg": goalsAvg
+    }
+
+    #max/min/srednia asyst w meczu w sezonie
+    assistsData = list(Event.objects.values_list("event_type", "match").filter(event_type = 'ASST').values('match').annotate(total=Count('match')).order_by('-total'))
+    
+    assistsMax = max(assistsData, key=lambda x:x['total'])
+    assistsMin = min(assistsData, key=lambda x:x['total'])
+    assistsAvg = 0 if len(assistsData) == 0 else sum(item['total'] for item in assistsData)/len(assistsData)
+
+    assistsExtra = {
+        "max": assistsMax["total"],
+        "min": assistsMin["total"],
+        "avg": assistsAvg
+    }
+
+    #max/min/srednia zoltych kartek w meczu w sezonie
+    yellowsData = list(Event.objects.values_list("event_type", "match").filter(event_type = 'YCAR').values('match').annotate(total=Count('match')).order_by('-total'))
+    
+    yellowsMax = max(yellowsData, key=lambda x:x['total'])
+    yellowsMin = min(yellowsData, key=lambda x:x['total'])
+    yellowsAvg = 0 if len(yellowsData) == 0 else sum(item['total'] for item in yellowsData)/len(yellowsData)
+
+    yellowsExtra = {
+        "max": yellowsMax["total"],
+        "min": yellowsMin["total"],
+        "avg": yellowsAvg
+    }
+
+    #max/min/srednia czerwonych kartek w meczu w sezonie
+    redsData = list(Event.objects.values_list("event_type", "match").filter(event_type = 'RCAR').values('match').annotate(total=Count('match')).order_by('-total'))
+    
+    redsMax = max(redsData, key=lambda x:x['total'])
+    redsMin = min(redsData, key=lambda x:x['total'])
+    redsAvg = 0 if len(redsData) == 0 else sum(item['total'] for item in redsData)/len(redsData)
+
+    redsExtra = {
+        "max": redsMax["total"],
+        "min": redsMin["total"],
+        "avg": redsAvg
+    }
         
-    return render(request, "statistics.html", {"goals": goals, "assists": assists, "yellows": yellows, "reds": reds})
+    return render(request, "statistics.html", {"goals": goals, "assists": assists, "yellows": yellows, "reds": reds, "goalsExtra": goalsExtra, "assistsExtra": assistsExtra, "yellowsExtra": yellowsExtra, "redsExtra": redsExtra})
 
 def club(request, club_id):
     team = get_object_or_404(Team, pk=club_id)
@@ -435,7 +485,7 @@ def players(request):
 
         playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName))
 
-    return render(request, "players.html", {"players": playersArray, "captcha": FormWithCaptcha})
+    return render(request, "players.html", {"players": playersArray})
 
 
 def increment_favourite(request, player_id):

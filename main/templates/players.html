@@ -16,7 +16,6 @@
     <a href="{% url 'main:pdf' 1 %}">
         <button class="players-download">Pobierz plik pdf z listą zawodników</button>
     </a>
-    {{captcha}}
     <div class="players-container">
         {% if searched %} {% for player in players %}
         <a href="{% url 'main:player' player.id %}">
