@@ -478,7 +478,7 @@ def players(request):
                 lastName = item
             i += 1
 
-        playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName)).order_by('first_name')
+        playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName).order_by('first_name'))
 
         return render(request, 'players.html', {'searched':searched,'players': playersArray})
 
