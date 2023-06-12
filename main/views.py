@@ -466,17 +466,12 @@ def players(request):
     playersArray = list(Player.objects.all())
 
     if request.method == "POST":
-        searched = request.POST['searched']
-        players = Player.objects.filter(Q(first_name__contains=searched) | Q(last_name__contains=searched) | Q(first_name__icontains=searched, last_name__icontains=searched))
-        return render(request, 'players.html', {'searched':searched,'players':players})
-    
-    if request.GET:
-        search = request.GET["search"].split(" ", 1)
+        searched = request.POST['searched'].split(" ", 1)
         firstName = ''
         lastName = ''
         i= 0
 
-        for item in search:
+        for item in searched:
             if i == 0:
                 firstName = item
             elif i == 1:
@@ -484,6 +479,8 @@ def players(request):
             i += 1
 
         playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName))
+
+        return render(request, 'players.html', {'searched':searched,'players': playersArray})
 
     return render(request, "players.html", {"players": playersArray})
 
