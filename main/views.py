@@ -428,7 +428,7 @@ def club(request, club_id):
     matchesTT = Match.objects.all().filter(Q(host=club_id) | Q(guest=club_id))
     matches = [dict(round = i + 1, row = []) for i in range(rowsMax)]
     players = list(Player.objects.all())
-    playersToDisplay = list(Player.objects.all().filter(team=club_id))
+    playersToDisplay = list(Player.objects.all().filter(team=club_id).order_by('first_name'))
 
     for match in matchesTT:
         host = 0
@@ -463,7 +463,7 @@ def player(request, player_id):
 
 
 def players(request):
-    playersArray = list(Player.objects.all())
+    playersArray = list(Player.objects.all().order_by('first_name'))
 
     if request.method == "POST":
         searched = request.POST['searched'].split(" ", 1)
@@ -478,7 +478,7 @@ def players(request):
                 lastName = item
             i += 1
 
-        playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName))
+        playersArray = list(Player.objects.all().filter(first_name__contains=firstName, last_name__contains=lastName)).order_by('first_name')
 
         return render(request, 'players.html', {'searched':searched,'players': playersArray})
 

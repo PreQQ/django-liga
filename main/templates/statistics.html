@@ -268,25 +268,33 @@
                 <div class="stats-container__table_extra">
                     <div class="stats-container__table_names_item">Gole w meczu</div>
                     <div class="stats-container__table_extra_item">Nawięcej: <span>{{goalsExtra.max}}</span></div>
-                    <div class="stats-container__table_extra_item">Średnio: <span>{{goalsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">
+                        Średnio: <span>{{goalsExtra.avg |floatformat:"2"}}</span>
+                    </div>
                     <div class="stats-container__table_extra_item">Najmniej: <span>{{goalsExtra.min}}</span></div>
                 </div>
                 <div class="stats-container__table_extra">
                     <div class="stats-container__table_names_item">Asysty w meczu</div>
                     <div class="stats-container__table_extra_item">Nawięcej: <span>{{assistsExtra.max}}</span></div>
-                    <div class="stats-container__table_extra_item">Średnio: <span>{{assistsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">
+                        Średnio: <span>{{assistsExtra.avg |floatformat:"2"}}</span>
+                    </div>
                     <div class="stats-container__table_extra_item">Najmniej: <span>{{assistsExtra.min}}</span></div>
                 </div>
                 <div class="stats-container__table_extra">
                     <div class="stats-container__table_names_item">Żółte kartki w meczu</div>
                     <div class="stats-container__table_extra_item">Nawięcej: <span>{{yellowsExtra.max}}</span></div>
-                    <div class="stats-container__table_extra_item">Średnio: <span>{{yellowsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">
+                        Średnio: <span>{{yellowsExtra.avg |floatformat:"2"}}</span>
+                    </div>
                     <div class="stats-container__table_extra_item">Najmniej: <span>{{yellowsExtra.min}}</span></div>
                 </div>
                 <div class="stats-container__table_extra">
                     <div class="stats-container__table_names_item">Czerwone kartki w meczu</div>
                     <div class="stats-container__table_extra_item">Nawięcej: <span>{{redsExtra.max}}</span></div>
-                    <div class="stats-container__table_extra_item">Średnio: <span>{{redsExtra.avg}}</span></div>
+                    <div class="stats-container__table_extra_item">
+                        Średnio: <span>{{redsExtra.avg |floatformat:"2"}}</span>
+                    </div>
                     <div class="stats-container__table_extra_item">Najmniej: <span>{{redsExtra.min}}</span></div>
                 </div>
             </div>
