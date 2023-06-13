@@ -52,26 +52,41 @@
         {% endif %}
         <div class="match-header__goals_container">
             <div class="match-header__goals_left">
-                {% for item in goals %} {% if item.player.team.id == match.host.id and item.event_type != 'GPEN' %}
-                <div class="match-header__goals_left_item">
-                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}'
-                </div>
-                {% elif item.player.team.id == match.host.id %}
-                <div class="match-header__goals_left_item">
-                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (K)
-                </div>
-                {% endif %} {% endfor %}
+                {% for item in goals %}
+                {% if item.player.team.id == match.host.id and item.event_type == 'OWNG' %}
+                    <div class="match-header__goals_left_item">
+                        {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (S)
+                    </div>
+                    {% endif %}
+                    {% if item.player.team.id == match.host.id and item.event_type == 'GPEN' %}
+                    <div class="match-header__goals_left_item">
+                        {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (K)
+                    </div>
+                    {% elif item.player.team.id == match.host.id and item.event_type != 'OWNG' %}
+                    <div class="match-header__goals_left_item">
+                        {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}'
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="match-header__goals_right">
-                {% for item in goals %} {% if item.player.team.id == match.guest.id and item.event_type != 'GPEN' %}
-                <div class="match-header__goals_left_item">
-                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}'
-                </div>
-                {% elif item.player.team.id == match.guest.id %}
-                <div class="match-header__goals_left_item">
-                    {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (K)
-                </div>
-                {% endif %} {% endfor %}
+                {% for item in goals %}
+                    {% if item.player.team.id == match.guest.id and item.event_type == 'OWNG' %}
+
+                    <div class="match-header__goals_left_item">
+                        {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (S)
+                    </div>
+                    {% endif %}
+                    {% if item.player.team.id == match.guest.id and item.event_type == 'GPEN' %}
+                    <div class="match-header__goals_left_item">
+                        {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}' (K)
+                    </div>
+                    {% elif item.player.team.id == match.guest.id and item.event_type != 'OWNG' %}
+                    <div class="match-header__goals_left_item">
+                        {{item.player.first_name}} {{item.player.last_name}} {{item.minute}}'
+                    </div>
+                    {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>

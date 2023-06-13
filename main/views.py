@@ -23,15 +23,21 @@ def matches(request):
         guest = 0
         outcome = 0
 
-        eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+        eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN') | Q(event_type='OWNG')).filter(match=match.id))
 
         for event in eventsTT:
             teamId = [player for player in players if player.id == event[2]][0].team.id
 
-            if teamId == match.host.id:
-                host += 1
-            elif teamId == match.guest.id:   
-                guest += 1 
+            if event[0] == 'OWNG':
+                if teamId == match.host.id:
+                    guest += 1
+                elif teamId == match.guest.id:   
+                    host += 1 
+            else:
+                if teamId == match.host.id:
+                    host += 1
+                elif teamId == match.guest.id:   
+                    guest += 1 
 
             
         if host - guest < 0:
@@ -48,20 +54,26 @@ def matches(request):
 def match(request, match_id):
     match = get_object_or_404(Match, pk=match_id)
     players = list(Player.objects.all())
-    goals = list(Event.objects.all().filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+    goals = list(Event.objects.all().filter(Q(event_type='GOAL') | Q(event_type='GPEN') | Q(event_type='OWNG')).filter(match=match.id).order_by('minute'))
 
     hostGoals = 0
     guestGoals = 0
 
-    eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+    eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN') | Q(event_type='OWNG')).filter(match=match.id))
 
     for event in eventsTT:
         teamId = [player for player in players if player.id == event[2]][0].team.id
 
-        if teamId == match.host.id:
-            hostGoals += 1
-        elif teamId == match.guest.id:   
-            guestGoals += 1 
+        if event[0] == 'OWNG':
+                if teamId == match.host.id:
+                    guestGoals += 1
+                elif teamId == match.guest.id:   
+                    hostGoals += 1 
+        else:
+            if teamId == match.host.id:
+                hostGoals += 1
+            elif teamId == match.guest.id:   
+                guestGoals += 1 
 
     pitchTeamHost = [None, None, None, None, None, None, None, None, None, None, None]
     pitchTeamGuest = [None, None, None, None, None, None, None, None, None, None, None]
@@ -207,15 +219,21 @@ def table(request):
             guest = 0
             outcome = 0
 
-            eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+            eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN') | Q(event_type="OWNG")).filter(match=match.id))
 
             for event in eventsTT:
                 teamId = [player for player in players if player.id == event[2]][0].team.id
 
-                if teamId == match.host.id:
-                    host += 1
-                elif teamId == match.guest.id:   
-                    guest += 1 
+                if event[0] == 'OWNG':
+                    if teamId == match.host.id:
+                        guest += 1
+                    elif teamId == match.guest.id:   
+                        host += 1 
+                else:
+                    if teamId == match.host.id:
+                        host += 1
+                    elif teamId == match.guest.id:   
+                        guest += 1 
 
             
             if host - guest < 0:
@@ -341,7 +359,7 @@ def table(request):
 def statistics(request):
     players = list(Player.objects.all())
 
-    goalsEvents = list(Event.objects.values_list("event_type", "player").filter(event_type = 'GOAL').values('player').annotate(total=Count('player')).order_by('-total'))[:5]
+    goalsEvents = list(Event.objects.values_list("event_type", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN') | Q(event_type="OWNG")).values('player').annotate(total=Count('player')).order_by('-total'))[:5]
     goals = []
 
     for x in goalsEvents:
@@ -367,7 +385,7 @@ def statistics(request):
 
 
     #max/min/srednia goli w meczu w sezonie
-    goalsData = list(Event.objects.values_list("event_type", "match").filter(event_type = 'GOAL').values('match').annotate(total=Count('match')).order_by('-total'))
+    goalsData = list(Event.objects.values_list("event_type", "match").filter(Q(event_type='GOAL') | Q(event_type='GPEN') | Q(event_type="OWNG")).values('match').annotate(total=Count('match')).order_by('-total'))
 
     goalsMax = max(goalsData, key=lambda x:x['total'])
     goalsMin = min(goalsData, key=lambda x:x['total'])
@@ -435,15 +453,21 @@ def club(request, club_id):
         guest = 0
         outcome = 0
 
-        eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN')).filter(match=match.id))
+        eventsTT = list(Event.objects.values_list("event_type", "match", "player").filter(Q(event_type='GOAL') | Q(event_type='GPEN') | Q(event_type="OWNG")).filter(match=match.id))
 
         for event in eventsTT:
             teamId = [player for player in players if player.id == event[2]][0].team.id
 
-            if teamId == match.host.id:
-                host += 1
-            elif teamId == match.guest.id:   
-                guest += 1 
+            if event[0] == 'OWNG':
+                    if teamId == match.host.id:
+                        guest += 1
+                    elif teamId == match.guest.id:   
+                        host += 1 
+            else:
+                    if teamId == match.host.id:
+                        host += 1
+                    elif teamId == match.guest.id:   
+                        guest += 1 
 
             
         if host - guest < 0:

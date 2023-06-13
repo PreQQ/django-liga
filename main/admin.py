@@ -3,11 +3,13 @@ from django.contrib import admin
 # Register your models here.
 from .models import Stadium, Team, Player, Match, Event, Change
 
-
+class MatchInlineAdmin(admin.StackedInline):
+    model = Event
 
 class MatchAdmin(admin.ModelAdmin):
     list_display = ('host', 'guest', 'match_round', 'date')
     list_display_links = ('host', 'guest')
+    inlines = [MatchInlineAdmin]
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('event_type', 'player', 'minute', 'match')
@@ -16,6 +18,8 @@ class EventAdmin(admin.ModelAdmin):
 class PlayerAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'last_name', 'team')
     list_display_links = ('first_name', 'last_name', 'team')
+
+
 
 admin.site.register(Stadium)
 admin.site.register(Team)

@@ -62,6 +62,7 @@ class Match(models.Model):
 class Event(models.Model):
     class EventChoices(models.TextChoices):
         GOAL = 'GOAL', _('Gol')
+        OWNG = 'OWNG', _('Samobój')
         SHOT = 'SHOT', _('Strzał')
         FOUL = 'FOUL', _('Faul')
         YELLOW_CARD = 'YCAR', _('Żółta kartka')
